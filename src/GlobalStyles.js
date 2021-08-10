@@ -42,4 +42,15 @@ export const GlobalStyles = createGlobalStyle`
   hr{
     opacity: .3;
   }
+
+  button{
+    padding: 0;
+    border: none;
+    font: inherit;
+    color: inherit;
+    background-color: transparent;
+    /* отображаем курсор в виде руки при наведении; некоторые
+    считают, что необходимо оставлять стрелочный вид для кнопок */
+    cursor: pointer;
+  }
 `;

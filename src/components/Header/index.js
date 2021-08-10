@@ -20,12 +20,9 @@ const Header = () => {
                 </Nav>
                 <Search placeholder="Найти..."/>
                 <ButtonContainer>
-                    <Button bg={"green"} to="/profile">
+                    <Button bg={"green"} to="/basket">
                         <i className="fas fa-shopping-basket"></i>
                     </Button>
-                </ButtonContainer>
-                <ButtonContainer>
-                     <Button to="/auth">Войти</Button>
                 </ButtonContainer>
             </Wrapper>
         </Container>

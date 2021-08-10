@@ -48,7 +48,8 @@ export const NavLinkStyled = styled(NavLink)`
   border: 1px solid transparent;
   
   &.active{
-    color: red;
+    //color: red;
+    box-shadow: 0 2px 1px var(--green);
   }
   
   :hover{

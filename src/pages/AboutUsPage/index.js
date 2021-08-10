@@ -1,13 +1,11 @@
 import React from "react";
+import {Container} from "./AboutUs.styles";
 
 const AboutUsPage = () => {
     return (
-        <>
-            <h1 style={{
-                paddingTop: "300px",
-                color: "red"
-            }}>About us</h1>
-        </>
+        <Container>
+            <h1>About us</h1>
+        </Container>
     );
 }
 

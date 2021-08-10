@@ -6,7 +6,6 @@ import Footer from "./components/Footer";
 
 import HomePage from "./pages/HomePage";
 import AboutUsPage from "./pages/AboutUsPage";
-import AuthPage from "./pages/AuthPage";
 import PricePage from "./pages/PricePage";
 import ProductInfoPage from "./pages/ProductInfoPage";
 import NotFoundPage from "./pages/NotFoundPage";
@@ -32,9 +31,8 @@ const App = () => {
             <Route path="/service/" exact render={() => <ServicesPage/>} />
             <Route path="/price" render={() => <PricePage/>} />
             <Route path="/about" render={() => <AboutUsPage/>} />
-            <Route path="/auth" render={() => <AuthPage/>} />
+            <Route path="/basket/" render={() => <ProfilePage/>} />
 
-            <Route path="/profile/:id" render={() => <ProfilePage/>} />
             <Route path={`/admin${989823083}`} render={() => <ProfilePage/>} />
             <Route render={() => <NotFoundPage/>} />
         </Switch>

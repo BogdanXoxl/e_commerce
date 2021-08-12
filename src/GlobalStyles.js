@@ -7,6 +7,7 @@ export const GlobalStyles = createGlobalStyle`
     --white: #fff;
     --lightGrey: #d1d8de;
     --grey: rgba(179, 191, 201, 0.15);
+    --orange: #fe7200;
     --blue: #007cff;
     --darkSkyBlue: #0055ff;
     --green: #6cb73a;
@@ -21,6 +22,8 @@ export const GlobalStyles = createGlobalStyle`
     --fontBig: 1.5rem;
     --fontMed: 1.3rem;
     --fontSmall: 1rem;
+    --fontMSmall: 0.8rem;
+    --fontVerySmall: 0.5rem;
 
     --fontWBold: 700;
     --fontWMed: 500;

@@ -71,7 +71,7 @@ export const Control = styled.div`
 export const Button = styled.button`
   transform: translateY(0px);
   transition: 0.3s linear;
-  background: var(--blue);
+  background: var(--darkBlue);
   border-radius: 5px;
   position: relative;
   overflow: hidden;

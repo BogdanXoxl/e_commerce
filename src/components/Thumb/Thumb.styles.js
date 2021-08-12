@@ -9,7 +9,7 @@ import styled from "styled-components";
     animation: animateThumb 0.5s;
     
     :hover{
-      opacity: 0.8;
+      opacity: 0.7;
     }
     
     @keyframes animateThumb {

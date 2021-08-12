@@ -10,8 +10,17 @@ export const Container = styled.div`
   flex-direction: row;
   align-items: flex-start;
   color: var(--lightGrey);
+
+  animation: animateThumb 0.5s;
   
-  
+  @keyframes animateThumb {
+    from{
+      opacity: 0;
+    }
+    to{
+      opacity: 1;
+    }
+  }
   
   .category{
     color: var(--white);
@@ -42,6 +51,7 @@ export const Wrapper = styled.div`
   border-radius: 30px 0 0 30px;
   padding: 30px;
   margin-top: 30px;
+  max-height: 420px;
 
   box-shadow: 0 0 30px 1px grey;
 
@@ -52,13 +62,11 @@ export const Wrapper = styled.div`
   }
 `;
 
-export const Body = styled.div`
 
-`;
 
 export const Info = styled.div`
   width: 80%;
-  margin: 30px;
+  margin: 20px;
 
   @media screen and (max-width: 720px){
     margin: 10px;
@@ -66,20 +74,37 @@ export const Info = styled.div`
   
 `;
 
+export const Description = styled.p`
+  width: 80%;
+  margin: 10px;
+  font-size: var(--fontMed);
+`;
+
+export const SizeButton = styled.div`
+  position: relative;
+  padding: 0 5px;
+  margin: 3px;
+  outline: 1px solid var(--darkgreen);
+  border-radius: 3px;
+  cursor: pointer;
+  
+  
+  :hover{
+    outline-color: var(--green);
+  }
+`;
 
 export const BtnWrapper = styled.div`
   margin: 1rem;
 `;
 
-
-
-
-export const SizeButton = styled.div`
+export const BtnContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 1rem;
   
-`;
-
-export const Description = styled.p`
-  width: 80%;
-  margin: 10px;
-  font-size: var(--fontMed);
+  span{
+    margin-right: 5px;
+  }
 `;

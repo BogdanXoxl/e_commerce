@@ -3,6 +3,8 @@ p {
     margin: 0;
 }
 
+/*//bt more-bt*/
+
 .bt {
     cursor: pointer;
     position: relative;
@@ -31,9 +33,9 @@ p {
     font-size: 14px;
 }
 
-#wrapper.smooth section.smoothy.show {
-    visibility: visible;
-}
+                                            #wrapper.smooth section.smoothy.show {
+                                                visibility: visible;
+                                            }
 
 .more-bt:before {
     left: 0;
@@ -43,15 +45,6 @@ p {
     width: 2px;
 }
 
-.more-bt:after, .more-bt:before {
-    content: " ";
-    display: block;
-    background: #6cb73a;
-    position: absolute;
-    -webkit-transition: .5s;
-    transition: .5s;
-    z-index: 10;
-}
 
 .more-bt:after {
     top: 0;
@@ -72,7 +65,6 @@ p {
 }
 
 
-
 .more-bt:before {
     left: 0;
     bottom: 0;
@@ -81,15 +73,6 @@ p {
     width: 2px;
 }
 
-.more-bt:after, .more-bt:before {
-    content: " ";
-    display: block;
-    background: #6cb73a;
-    position: absolute;
-    -webkit-transition: .5s;
-    transition: .5s;
-    z-index: 10;
-}
 
 .more-bt .fl, .more-bt .sfl {
     position: absolute;
@@ -105,19 +88,6 @@ p {
     transition-delay: .1s;
 }
 
-.more-bt .fl, .more-bt .sfl {
-    position: absolute;
-    right: 0;
-    height: 100%;
-    width: 0;
-    z-index: 2;
-    background: #6cb73a;
-    top: 0;
-    -webkit-transition: .5s;
-    transition: .5s;
-    -webkit-transition-delay: .1s;
-    transition-delay: .1s;
-}
 
 .more-bt .sfl {
     z-index: 1;

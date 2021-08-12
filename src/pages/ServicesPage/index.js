@@ -1,22 +1,12 @@
-import React, {useEffect, useState} from "react";
-import {Container} from "./ServicesPage.styles";
-import {ServiceData} from "../../testData";
+import React from "react";
+import {connect} from "react-redux";
+
 import ServiceItem from "../../components/ServiceItem";
-import Spinner from "../../components/Spinner";
+import {Container} from "./ServicesPage.styles";
 
-const ServicesPage = () => {
-    const [services, setServices] = useState([]);
-    const [isLoading, setIsLoading] = useState(true);
 
-    useEffect(() => {
-        setIsLoading(true);
-        setTimeout(() => {
-            setServices(ServiceData);
-            setIsLoading(false);
-        }, 500);
-        window.scroll(0,0);
-    }, []);
 
+const ServicesPage = ({services}) => {
 
     return (
         <Container>
@@ -24,9 +14,14 @@ const ServicesPage = () => {
             {services.map((service) => (
                 <ServiceItem key={service.id} {...service}/>
             ))}
-            {isLoading && <Spinner/>}
         </Container>
     );
 };
 
-export default ServicesPage;
+
+const mapStateToProps = (state) => {
+    return {
+        services: state.shop.services
+    };
+};
+export default connect(mapStateToProps)(ServicesPage);

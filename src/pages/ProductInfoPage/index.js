@@ -1,72 +1,90 @@
-import React, {useState} from "react";
+import React, {useEffect} from "react";
+import { Redirect, useHistory} from "react-router-dom";
+import {connect} from "react-redux";
+
+import {addToCart} from "../../redux/Shopping/shopping-actions";
+
+import Button from "../../components/Button"
 import {
-    Body,
     BtnWrapper,
     Container,
     Image,
     Info,
     Wrapper,
-    Button,
     SizeButton,
-    Description
+    Description,
+    BtnContainer
 } from "./ProductInfoPage.styles";
 
 import NoImage from "../../assets/no_image.jpg";
-import "./button.css";
 
 
-const InitialInfo = {
-    title: "LOLKEK",
-    category: "thumbs",
-    promo: "/path",
-    sort: "A",
-    material: "",
-    price: 500,
-    sizes: [],
-    availability: true,
-    description: "Lorem ipsum dolor sit amet, " +
-        "consectetur adipisicing elit. " +
-        "Consequatur consequuntur debitis " +
-        "dicta, esse explicabo facilis itaque " +
-        "maiores nisi obcaecati possimus quas " +
-        "quis sapiente vero. Architecto illum ipsam " +
-        "libero minima modi?\n"
-}
 
-const ProductInfoPage = () => {
-    const [info, setInfo] = useState(InitialInfo);
+const ProductInfoPage = ({item, inCart, addToCart}) => {
+    const history = useHistory();
 
+
+    useEffect(() => {window.scroll(0,0)}, []);
     return (
-        <Container>
-            <Wrapper>
-                <h1>{info.title || "Title"}</h1>
-                <span className="category">{`/${info.category || "Category"}`}</span>
-                <Body>
-                    <Info>
-                        <h2>Размеры:</h2>
-                        {info.sizes.map((size) => (
-                            <SizeButton>{size}</SizeButton>//onClick
-                        ))}
-                        <span>Сорт: {info.sort}</span>
-                        <Description>
-                            {info.description}
-                        </Description>
-                    </Info>
-                    <BtnWrapper>
-                        <p>Цена: {info.price}</p>
-                        <button className="bt more-bt" href="javascript:void(0)">
-                            <span className="fl"></span>
-                            <span className="sfl"></span>
-                            <span className="cross"></span>
-                            <i></i>
-                            <p>В корзину</p>
-                        </button>
-                    </BtnWrapper>
-                </Body>
-            </Wrapper>
-            <Image src={NoImage}/>
-        </Container>
+            <Container>
+                {
+                    !item ?
+                    <Redirect to="/404"/>
+                    : (
+                        <Wrapper>
+                            <h1>{item.title}</h1>
+                            <span className="category">{`/${item.category}`}</span>
+                            <div>
+                                <Info>
+                                    <BtnContainer>
+                                        {item.sizes.length ?
+                                            <span>Размеры:</span>
+                                            :""}
+
+                                        {item.sizes.map(({size, id}) => (
+                                            <SizeButton key={id}>{size}</SizeButton>//onClick
+                                        ))}
+                                    </BtnContainer>
+                                    <span>Сорт: {item.sort}</span>
+                                    <Description>
+                                        {item? item.description: ""}
+                                    </Description>
+                                </Info>
+                                <BtnWrapper>
+                                    <p>Цена: {item? item.price: ''} руб.</p>
+                                    {inCart?
+                                        <Button
+                                            text="Перейти к оформлению"
+                                            callback={() => history.push('/cart')}
+                                            color={{color: "#fff", bg: "#fe7200"}}
+                                        />
+                                            :
+                                        <Button text="В корзину"
+                                                callback={() => addToCart(item.id, item.type)}
+                                        />
+                                    }
+
+                                </BtnWrapper>
+                            </div>
+                        </Wrapper>
+                )}
+                        <Image src={NoImage}/>
+
+            </Container>
     );
 };
 
-export default ProductInfoPage;
+const mapStateToProps = (state) => {
+    return {
+        item: state.shop.currentItem,
+        inCart: state.shop.cart.find(el => el.id === state.shop.currentItem.id && el.type === state.shop.currentItem.type)
+    };
+};
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        addToCart: (id, type) => {return dispatch(addToCart(id, type))}
+    };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(ProductInfoPage);

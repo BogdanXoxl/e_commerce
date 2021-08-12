@@ -69,6 +69,20 @@ export const ButtonContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-end;
+  
+  span{
+    background: red;
+    min-width: 23px;
+    min-height: 23px;
+    font-size: var(--fontSmall);
+    line-height: 23px;
+    border-radius: 50%;
+    text-align: center;
+    color: var(--white);
+    margin-left: -18px;
+    margin-top: -21px;
+    padding: 1px;
+  }
 `;
 
 export const Button = styled(Link)`

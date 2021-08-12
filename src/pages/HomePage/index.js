@@ -6,7 +6,9 @@ import Thumb from "../../components/Thumb";
 import NoImg from '../../assets/no_image.jpg'
 import HomeImg from "../../assets/home.jpg"
 import HeroImage from "../../components/HeroImage";
-import {GoodsData, ServiceData} from "../../testData";
+
+
+import {GoodsData, ServiceData} from "../../testData";//rudiment
 
 const HomePage = () => {
     const [topGoods, setTopGoods] = useState([]);
@@ -15,7 +17,6 @@ const HomePage = () => {
     useEffect(() => {
         setTopGoods([...topGoods, ...GoodsData.slice(0,5)]);
         setTopServices([...topServices, ...ServiceData.slice(0,5)]);
-        window.scroll(0,0);
     }, []);
 
     return (

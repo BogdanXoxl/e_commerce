@@ -1,11 +1,15 @@
 import React from "react";
+import {Link} from "react-router-dom";
+import {connect} from "react-redux";
+
 import LogoSvg from "../../assets/logo.svg"
 import {Container, Wrapper, Logo, Nav, NavLinkStyled, ButtonContainer, Button} from "./Header.styles";
 import Search from "../Search";
-import {Link} from "react-router-dom";
 
 
-const Header = () => {
+
+
+const Header = ({qty}) => {
 
     return (
         <Container>
@@ -20,13 +24,21 @@ const Header = () => {
                 </Nav>
                 <Search placeholder="Найти..."/>
                 <ButtonContainer>
-                    <Button bg={"green"} to="/basket">
+                    <Button bg={"green"} to="/cart">
                         <i className="fas fa-shopping-basket"></i>
                     </Button>
+                    {qty? <span>{qty}</span>: null}
                 </ButtonContainer>
             </Wrapper>
         </Container>
     );
 }
 
-export default Header;
+const mapStateToProps = (state) => {
+    return{
+        qty: state.shop.cart.length,
+    };
+};
+
+
+export default connect(mapStateToProps)(Header);

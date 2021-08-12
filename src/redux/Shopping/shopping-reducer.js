@@ -1,45 +1,14 @@
 import * as actionTypes from "./shopping-types";
-import {ServiceData, GoodsData} from "../../testData";
+import {ServiceData, GoodsData, CategoryData} from "../../testData";
 import {IMMUTABLE_TYPES, TYPES_OF_GOODS} from "./shopping-types";
 
 const INITIAL_STATE = {
-    products: [
-        ...GoodsData.filter(item => item.id > 3),
-        {
-            id: 1,
-            title: "This is the COOLEST Cube Ever",
-            type: "good",
-            description:
-                "This cube will keep you busy the entire day and it is very fun to play with",
-            price: 15.0,
-            image:
-                "https://images.unsplash.com/photo-1591991731833-b4807cf7ef94?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
-        },
-        {
-            id: 2,
-            title: "Large Coffee Cup",
-            type: "good",
-            description:
-                "Get a big cup of coffee every morning before the day starts",
-            price: 20.0,
-            image:
-                "https://images.unsplash.com/photo-1572119865084-43c285814d63?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80",
-        },
-        {
-            id: 3,
-            title: "Books That CHANGED My Life",
-            type: "good",
-            description:
-                "These books will keep you busy all throughout the entire lockdown and give you some great advise from famous people",
-            price: 150.0,
-            image:
-                "https://images.unsplash.com/photo-1512820790803-83ca734da794?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1374&q=80",
-        },
-    ], // {id, title, description, price, img}
+    products: [...GoodsData],
     services: [...ServiceData],
+    categories: [...CategoryData],
     cart: [], // {id, title, description, price, img, qty}
     currentItem: null,
-    currentCategory: null,
+    currentCategory: CategoryData[0],
     total_pages: 0,
     page: 0,
 }
@@ -93,6 +62,11 @@ const shopReducer = (state = INITIAL_STATE, {type, payload}) => {
             return {
                 ...state,
                 currentItem: payload
+            };
+        case actionTypes.LOAD_CURRENT_CATEGORY:
+            return {
+                ...state,
+                currentCategory: payload
             };
         default:
             return state;

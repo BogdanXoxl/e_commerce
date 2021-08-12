@@ -68,8 +68,7 @@ const ProductInfoPage = ({item, inCart, addToCart}) => {
                             </div>
                         </Wrapper>
                 )}
-                        <Image src={NoImage}/>
-
+                        <Image src={item? item.image || NoImage : null}/>
             </Container>
     );
 };

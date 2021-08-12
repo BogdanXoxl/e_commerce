@@ -1,27 +1,18 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { connect } from "react-redux";
 
 import Product from "../../components/Product";
 
 import {Container, FlexWrapper, SideBar, Wrapper} from "./ProductsPage.styles";
-import {Link} from "react-router-dom";
-
-const data = [
-     "Доска обрезная",
-     "Доска строганная сухая",
-     "Брус",
-     "Брусок",
-     "Доска пола",
-     "Вагонка",
-     "Блок Хаус",
-     "Имитация бруса",
-     "Масла для дерева",
-     "Террасная доска",
-     "Палубная доска",
-]
+import {loadCurrentCategory} from "../../redux/Shopping/shopping-actions";
 
 
-const ProductsPage = ({products, cart, currentCategory}) => {
+
+const ProductsPage = ({products, categories, currentCategory, loadCurrentCategory}) => {
+
+    useEffect(() => {
+        //get item from server with category === currentCategory
+    }, [currentCategory]);
 
     return (
         <Container>
@@ -30,23 +21,19 @@ const ProductsPage = ({products, cart, currentCategory}) => {
                 <SideBar>
                     <ul>
                         <li className="hidden-el">Категории</li>
-                        <li className="active">Some text</li>
-                        {data.map((category) => <li>{category}</li>)}
+                        {categories.map((category) =>
+                            <li
+                                className={category.id === currentCategory.id? "active": ""}
+                                onClick={() => {console.log( category.id=== currentCategory.id); return loadCurrentCategory(category)}}
+                            >{category.title}</li>
+                        )}
                     </ul>
                 </SideBar>
                 <Wrapper>
-                    {products.map((product) => <Product productData={product}/>)}
+                    {products.filter(product => product.categoryID === currentCategory.id)
+                        .map((product) => <Product productData={product}/>)}
                 </Wrapper>
             </FlexWrapper>
-
-
-                {/*{products.map((product) => (*/}
-                {/*    <Product*/}
-                {/*        key={product.id}*/}
-                {/*        productData={product}*/}
-                {/*        inCart={cart.find(item => item.id === product.id && item.type === product.type)}*/}
-                {/*    />*/}
-                {/*))}*/}
         </Container>
     );
 };
@@ -54,9 +41,15 @@ const ProductsPage = ({products, cart, currentCategory}) => {
 const mapStateToProps = (state) => {
     return {
         products: state.shop.products,
-        cart: state.shop.cart,
+        categories: state.shop.categories,
         currentCategory: state.shop.currentCategory
     };
 };
 
-export default connect(mapStateToProps)(ProductsPage);
+const mapDispatchToProps = (dispatch) => {
+    return {
+        loadCurrentCategory: (item) => dispatch(loadCurrentCategory(item))
+    };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(ProductsPage);

@@ -14,10 +14,11 @@ export const Container = styled.div`
 
 export const Wrapper = styled.div`
   width: 80vw;
+  margin-left: 1rem;
   display: grid;
   grid-template-columns: repeat(auto-fit, 15rem);
   grid-gap: 10px;
-  justify-content: center;
+  justify-content: stretch;
   animation: animateThumb .5s;
 
   @keyframes animateThumb {
@@ -28,6 +29,14 @@ export const Wrapper = styled.div`
       opacity: 1;
     }
   }
+
+  @media screen and (max-width: 940px){
+    justify-content: center;
+    width: 100vw;
+    margin-left: 0;
+    grid-template-columns: repeat(auto-fit, 21rem);
+  }
+  
 `;
 
 export const FlexWrapper = styled.div`
@@ -68,7 +77,7 @@ export const SideBar = styled.div`
     
     :first-child{padding-top: 1rem;}
     :last-child{padding-bottom: 1rem;}
-    :hover{
+    :not(.active):hover{
       background: var(--darkBlue);
       color: var(--white);
     }

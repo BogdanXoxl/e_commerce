@@ -37,3 +37,10 @@ export const loadCurrentItem = (item) => {
         payload: item,
     };
 };
+
+export const loadCurrentCategory= (item) => {
+    return {
+        type: actionTypes.LOAD_CURRENT_CATEGORY,
+        payload: item,
+    };
+};

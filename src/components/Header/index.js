@@ -2,7 +2,7 @@ import React from "react";
 import {Link} from "react-router-dom";
 import {connect} from "react-redux";
 
-import LogoSvg from "../../assets/logo.svg"
+import LogoSvg from "../../assets/logo.png";
 import {Container, Wrapper, Logo, Nav, NavLinkStyled, ButtonContainer, Button} from "./Header.styles";
 import Search from "../Search";
 

@@ -14,6 +14,10 @@ export const Container = styled.div`
     text-decoration: none;
     color: var(--dark);
   }
+  
+  button{
+    margin: 1rem auto;
+  }
 `;
 
 
@@ -45,6 +49,10 @@ export const IMGContainer = styled.div`
   height:30vh;
   margin: 0 auto;
   border-radius: 7px;
+  
+  @media screen and (max-width: 720px){
+    height:50vh;
+  }
 `;
 
 

@@ -14,7 +14,7 @@ const Product = ({productData, inCart, addToCart, loadCurrentItem}) => {
             <Container>
                 <Link to={`/product/${productData.id}`} onClick={() => loadCurrentItem(productData)}>
                     <IMGContainer>
-                        <Image src={NoImage}/>
+                        <Image src={productData.image || NoImage}/>
                     </IMGContainer>
                     <Title>{productData.title}</Title>
                 </Link>
@@ -31,15 +31,6 @@ const Product = ({productData, inCart, addToCart, loadCurrentItem}) => {
                 }
 
             </Container>
-    //             {!inCart?
-    //                     <button onClick={() => addToCard(productData.id, productData.type)} className={`${styles.buttons__btn} ${styles.buttons__add}`}>
-    //                         Add To Cart
-    //                     </button>
-    //                 : <Link to="/cart" className={`${styles.buttons__btn} ${styles.buttons__add}`}> Go to cart</Link>
-    //             }
-    //
-    //         </div>
-    //     </div>
     );
 };
 

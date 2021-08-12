@@ -3,7 +3,7 @@ import {NavLink, Link} from "react-router-dom"
 
 export const Container = styled.div`
   width: 100%;
-  height: 80px;
+  height: 10vh;
   z-index: 20;
   background: var(--white);
   position: fixed;
@@ -16,27 +16,28 @@ export const Wrapper = styled.div`
   margin: 0 auto;
   max-width: var(--maxWidth);
   z-index: 20;
-  display: flex;
   position: relative;
+  
+  display: flex;
   align-items: center;
   justify-content: space-between;
 `;
 
 
 export const Logo = styled.img`
-  width: 180px;
+  width: 120px;
   cursor: pointer;
   
   @media screen and (max-width: 1000px){
-    width: 150px;
+    width: 100px;
   }
 `;
 
 
 export const Nav = styled.nav`
   flex:1;
-  position: center;
-  padding-left: 30px;
+  //position: center;
+  padding-left: 7%;
 `;
 
 

@@ -1,4 +1,5 @@
 import * as actionTypes from "./shopping-types";
+import firebase from "../../firebase/index";
 
 export const addToCart = (itemID, typeOfItem) => {
     return {
@@ -43,4 +44,32 @@ export const loadCurrentCategory= (item) => {
         type: actionTypes.LOAD_CURRENT_CATEGORY,
         payload: item,
     };
+};
+
+export const loadCurrentItemById = (id) => {
+    return async (dispatch) => {
+        const item = await firebase.getProductById(id);
+        dispatch({type: actionTypes.LOAD_CURRENT_ITEM, payload: item});
+    }
+};
+
+export const loadCurrentCategoryByTitle = (title) => {
+    return async (dispatch) => {
+        const category = await firebase.getCategoryByTitle(title);
+        dispatch({type: actionTypes.LOAD_CURRENT_CATEGORY, payload: category});
+    }
+};
+
+export const loadCategories = () => {
+    return async (dispatch) => {
+        const categories = await firebase.getCategories();
+        dispatch({type: actionTypes.LOAD_CATEGORIES_FROM_DATABASE, payload: categories});
+    }
+};
+
+export const loadProducts = () => {
+    return async (dispatch) => {
+        const category = await firebase.getProducts();
+        dispatch({type: actionTypes.LOAD_PRODUCTS_FROM_DATABASE, payload: category});
+    }
 };

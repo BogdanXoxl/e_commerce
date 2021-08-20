@@ -8,6 +8,7 @@ export const GlobalStyles = createGlobalStyle`
     --lightGrey: #d1d8de;
     --grey: rgba(179, 191, 201, 0.15);
     --orange: #fe7200;
+    --darkOrange: #d85f00;
     --blue: #007cff;
     --darkSkyBlue: #0055ff;
     --green: #6cb73a;
@@ -15,6 +16,7 @@ export const GlobalStyles = createGlobalStyle`
     --darkBlue: #2f3640;
     --dark: #1c1c1c;
     --black: #000;
+    
 
     --maxWidth: 1240px;
 

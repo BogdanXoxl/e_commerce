@@ -1,8 +1,9 @@
 import React, {useEffect} from "react";
-import { Redirect, useHistory} from "react-router-dom";
+import {withRouter} from "react-router-dom";
 import {connect} from "react-redux";
+import parse from "html-react-parser";
 
-import {addToCart} from "../../redux/Shopping/shopping-actions";
+import {addToCart, loadCurrentItemById} from "../../redux/Shopping/shopping-actions";
 
 import Button from "../../components/Button"
 import {
@@ -13,41 +14,46 @@ import {
     Wrapper,
     SizeButton,
     Description,
-    BtnContainer
+    BtnContainer, IMGContainer
 } from "./ProductInfoPage.styles";
 
 import NoImage from "../../assets/no_image.jpg";
 
 
 
-const ProductInfoPage = ({item, inCart, addToCart}) => {
-    const history = useHistory();
+const ProductInfoPage = ({item, inCart, addToCart, loadCurrentItemById, ...props}) => {
+    useEffect(() => {
+        console.log(props);
+        window.scroll(0,0)}, []);
 
+    useEffect(() => {
+        if(!item){
+            loadCurrentItemById(props.match.params.id);
+        }
+    }, []);
 
-    useEffect(() => {window.scroll(0,0)}, []);
     return (
             <Container>
                 {
                     !item ?
-                    <Redirect to="/404"/>
+                   ""
                     : (
                         <Wrapper>
                             <h1>{item.title}</h1>
-                            <span className="category">{`/${item.category}`}</span>
                             <div>
                                 <Info>
                                     <BtnContainer>
-                                        {item.sizes.length ?
+                                        {item.sizes && item.sizes.length ?
                                             <span>Размеры:</span>
                                             :""}
 
-                                        {item.sizes.map(({size, id}) => (
-                                            <SizeButton key={id}>{size}</SizeButton>//onClick
+                                        {item.sizes && item.sizes.map(({size}) => (
+                                            <SizeButton key={size}>{size}</SizeButton>//onClick
                                         ))}
                                     </BtnContainer>
                                     <span>Сорт: {item.sort}</span>
                                     <Description>
-                                        {item? item.description: ""}
+                                        {item && item.description? parse(item.description): ""}
                                     </Description>
                                 </Info>
                                 <BtnWrapper>
@@ -55,7 +61,7 @@ const ProductInfoPage = ({item, inCart, addToCart}) => {
                                     {inCart?
                                         <Button
                                             text="Перейти к оформлению"
-                                            callback={() => history.push('/cart')}
+                                            callback={() => props.history.push('/cart')}
                                             color={{color: "#fff", bg: "#fe7200"}}
                                         />
                                             :
@@ -68,7 +74,9 @@ const ProductInfoPage = ({item, inCart, addToCart}) => {
                             </div>
                         </Wrapper>
                 )}
-                        <Image src={item? item.image || NoImage : null}/>
+                        <IMGContainer>
+                            <Image src={item && item.hasOwnProperty('image')? item.image.src : NoImage}/>
+                        </IMGContainer>
             </Container>
     );
 };
@@ -82,8 +90,9 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        addToCart: (id, type) => {return dispatch(addToCart(id, type))}
+        addToCart: (id, type) =>  dispatch(addToCart(id, type)),
+        loadCurrentItemById: (id) => dispatch(loadCurrentItemById(id))
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(ProductInfoPage);
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(ProductInfoPage));

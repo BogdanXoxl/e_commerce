@@ -8,7 +8,6 @@ import Search from "../Search";
 
 
 
-
 const Header = ({qty}) => {
 
     return (
@@ -28,6 +27,7 @@ const Header = ({qty}) => {
                         <i className="fas fa-shopping-basket"></i>
                     </Button>
                     {qty? <span>{qty}</span>: null}
+
                 </ButtonContainer>
             </Wrapper>
         </Container>
@@ -39,6 +39,9 @@ const mapStateToProps = (state) => {
         qty: state.shop.cart.length,
     };
 };
+
+
+
 
 
 export default connect(mapStateToProps)(Header);

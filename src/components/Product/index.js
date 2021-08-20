@@ -10,11 +10,12 @@ import Button from "../Button";
 
 const Product = ({productData, inCart, addToCart, loadCurrentItem}) => {
     const history = useHistory();
+
     return (
             <Container>
                 <Link to={`/product/${productData.id}`} onClick={() => loadCurrentItem(productData)}>
                     <IMGContainer>
-                        <Image src={productData.image || NoImage}/>
+                        <Image src={productData.image && productData.image.src? productData.image.src : NoImage}/>
                     </IMGContainer>
                     <Title>{productData.title}</Title>
                 </Link>
@@ -37,7 +38,7 @@ const Product = ({productData, inCart, addToCart, loadCurrentItem}) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         addToCart: (id, type) => dispatch(addToCart(id, type)),
-        loadCurrentItem: (item) => {console.log(item); return dispatch(loadCurrentItem(item))},
+        loadCurrentItem: (item) => dispatch(loadCurrentItem(item)),
     };
 };
 

@@ -4,6 +4,7 @@ export const Container = styled.div`
   padding-top: 15vh;
   margin: 0 auto 30px;
   max-width: var(--maxWidth);
+  min-height: 100vh;
 
   h1{
     color: var(--dark);

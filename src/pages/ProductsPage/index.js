@@ -4,36 +4,45 @@ import { connect } from "react-redux";
 import Product from "../../components/Product";
 
 import {Container, FlexWrapper, SideBar, Wrapper} from "./ProductsPage.styles";
-import {loadCurrentCategory} from "../../redux/Shopping/shopping-actions";
+import {loadCategories, loadCurrentCategory, loadProducts} from "../../redux/Shopping/shopping-actions";
 
 
 
-const ProductsPage = ({products, categories, currentCategory, loadCurrentCategory}) => {
-
+const ProductsPage = ({products, categories, currentCategory, loadCurrentCategory, loadProducts, loadCategories}) => {
     useEffect(() => {
-        //get item from server with category === currentCategory
-    }, [currentCategory]);
+        loadProducts();
+        loadCategories();
+    }, []);
+
+    useEffect(()=> {
+        if(!currentCategory.title)
+            loadCurrentCategory(categories[0]);
+    }, [categories]);
+
 
     return (
         <Container>
             <h1>Пиломатериалы от пиловочника - лучшие из лучших</h1>
-            <FlexWrapper>
-                <SideBar>
-                    <ul>
-                        <li className="hidden-el">Категории</li>
-                        {categories.map((category) =>
-                            <li
-                                className={category.id === currentCategory.id? "active": ""}
-                                onClick={() => {console.log( category.id=== currentCategory.id); return loadCurrentCategory(category)}}
-                            >{category.title}</li>
-                        )}
-                    </ul>
-                </SideBar>
-                <Wrapper>
-                    {products.filter(product => product.categoryID === currentCategory.id)
-                        .map((product) => <Product productData={product}/>)}
-                </Wrapper>
-            </FlexWrapper>
+            {categories.length > 1?
+                <FlexWrapper>
+                    <SideBar>
+                        <ul>
+                            <li className="hidden-el">Категории</li>
+                            {categories.map((category) =>
+                                <li
+                                    key={category.id+category.title}
+                                    className={category.id === currentCategory.id? "active": ""}
+                                    onClick={() =>  loadCurrentCategory(category)}
+                                >{category.title}</li>
+                            )}
+                        </ul>
+                    </SideBar>
+                    <Wrapper>
+                        {products.filter(product => product.categoryID === currentCategory.id)
+                            .map((product) => <Product key={product.id + "category:" + product.categoryID} productData={product}/>)}
+                    </Wrapper>
+                </FlexWrapper>
+                : ""}
         </Container>
     );
 };
@@ -48,7 +57,9 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        loadCurrentCategory: (item) => dispatch(loadCurrentCategory(item))
+        loadCurrentCategory: (item) => dispatch(loadCurrentCategory(item)),
+        loadProducts: () => dispatch(loadProducts()),
+        loadCategories: () => dispatch(loadCategories())
     };
 };
 

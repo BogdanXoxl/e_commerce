@@ -3,12 +3,12 @@ import {ServiceData, GoodsData, CategoryData} from "../../testData";
 import {IMMUTABLE_TYPES, TYPES_OF_GOODS} from "./shopping-types";
 
 const INITIAL_STATE = {
-    products: [...GoodsData],
+    products: [],
     services: [...ServiceData],
-    categories: [...CategoryData],
+    categories: [{id: 0}],
     cart: [], // {id, title, description, price, img, qty}
     currentItem: null,
-    currentCategory: CategoryData[0],
+    currentCategory: {},
     total_pages: 0,
     page: 0,
 }
@@ -67,6 +67,16 @@ const shopReducer = (state = INITIAL_STATE, {type, payload}) => {
             return {
                 ...state,
                 currentCategory: payload
+            };
+        case actionTypes.LOAD_CATEGORIES_FROM_DATABASE:
+            return {
+                ...state,
+                categories: payload
+            };
+        case actionTypes.LOAD_PRODUCTS_FROM_DATABASE:
+            return {
+                ...state,
+                products: payload
             };
         default:
             return state;

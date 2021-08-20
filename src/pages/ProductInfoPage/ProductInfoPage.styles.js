@@ -8,7 +8,7 @@ export const Container = styled.div`
   min-height: 500px;
   display: flex;
   flex-direction: row;
-  align-items: flex-start;
+  align-items: stretch;
   color: var(--lightGrey);
 
   animation: animateThumb 0.5s;
@@ -34,14 +34,35 @@ export const Container = styled.div`
 
 
 export const Image = styled.img`
-  height: 480px;
-  border-radius: 16px;
-  margin: 3px;
-  
+  position: absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  width:100%;
+  height:100%;
+  object-fit:cover;
+
+
   @media screen and (max-width: 720px){
     width: 100%;
     margin: 0;
     border-radius: 0;
+  }
+`;
+
+export const IMGContainer = styled.div`
+  position: relative;
+  overflow:hidden;
+  width:100%;
+  border-radius: 16px;
+  margin: 3px;
+  min-height: 420px;
+  
+  @media screen and (max-width: 720px){
+    height:90vh;
+    border-radius: 0;
+    margin: 0;
+    padding: 0;
   }
 `;
 
@@ -51,7 +72,8 @@ export const Wrapper = styled.div`
   border-radius: 30px 0 0 30px;
   padding: 30px;
   margin-top: 30px;
-  max-height: 420px;
+  width: 100vw;
+  margin-bottom: 3rem;
 
   box-shadow: 0 0 30px 1px grey;
 
@@ -59,6 +81,7 @@ export const Wrapper = styled.div`
     padding: 10px;
     margin-top: 0;
     border-radius: 0;
+    width: 100vw;
   }
 `;
 
@@ -75,9 +98,12 @@ export const Info = styled.div`
 `;
 
 export const Description = styled.p`
-  width: 80%;
   margin: 10px;
   font-size: var(--fontMed);
+  
+  @media screen and (max-width: 720px){
+    margin: 0 auto;
+  }
 `;
 
 export const SizeButton = styled.div`

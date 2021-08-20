@@ -1,159 +1,87 @@
 import styled from "styled-components";
 
-export const Content = styled.div`
-  position: relative;
-  text-align: left;
-  overflow: hidden;
-  padding: 30px;
-  height: 100%;
-  float: left;
-  width: 50%;
-
-`;
-
 export const Container  = styled.div`
-  box-shadow: 0 15px 30px 1px grey;
-  background: var(--grey);
-  text-align: center;
-  border-radius: 5px;
-  overflow: hidden;
-  margin: 5em auto;
-  height: 350px;
-  width: var(--maxWidth);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border-radius: 10px;
+  padding: 1rem;
+  background: var(--white);
+  box-shadow: 0 5px 10px 2px rgba(34, 60, 80, 0.2);
+  max-width: var(--maxWidth);
+  margin: 1rem;
 
-  img {width: 100%;height: 100%;}
+  animation: animateThumb .5s;
 
-  ${Content} h1 {
-    
-    position: relative;
-    font-size: var(--fontSuperBig);
-    color: var(--dark);
-    margin: 0;
-
-      :before {
-          position: absolute;
-          content: '';
-          right: 0%;
-          top: 0%;
-          transform: translate(25px, -15px);
-          display: inline-block;
-          background: var(--lightGrey);
-          border-radius: 5px;
-          font-size: 14px;
-          padding: 5px;
-          color: var(--white);
-          margin: 0;
-          animation: chan-sh 6s ease infinite;
-      }
+  @keyframes animateThumb {
+    from{
+      opacity: 0;
     }
+    to{
+      opacity: 1;
+    }
+  }
+ 
 
-  ${Content} > p {
-    margin-top: 20px;
-    font-size: var(--fontMed);
-    color: var(--darkBlue);
-    
+  a{
+    text-decoration: none;
+    color: var(--dark);
+  }
+
+  button{
+    margin: 1rem auto;
+  }
+  
+  @media screen and (max-width: 720px){
+    flex-direction: column;
   }
 `;
 
-export const Stars = styled.span`
-  display: inline-block;
-  margin-left: 0.5em;
-  color: gold;
-  width: 50%;
+export const Title  = styled.h3`
+  font-size: var(--fontMed);
+  font-weight: var(--fontWBold);
+  text-transform: uppercase;
+  margin: 3rem 0;
 `;
 
-export const Control = styled.div`
-  position: absolute;
-  bottom: 20%;
-  left: 5%;
+export const Description  = styled.div`
+    text-align: left;
 `;
 
-export const Button = styled.button`
-  transform: translateY(0px);
-  transition: 0.3s linear;
-  background: var(--darkBlue);
-  border-radius: 5px;
+export const IMGContainer  = styled.div`
   position: relative;
-  overflow: hidden;
-  cursor: pointer;
-  outline: none;
-  border: none;
-  color: var(--lightGrey);
-  padding: 0;
-  margin: 0;
+  overflow:hidden;
+  height: 35vh;
+  width: 30vw;
+  border-radius: 7px;
 
-  :hover {
-    transform: translateY(-6px);
-    background: var(--darkSkyBlue);
+  @media screen and (max-width: 720px){
+    height:50vh;
+    width: 100%;
+    order: -1;
   }
-
-  :hover .price {transform: translateX(-110%);}
-  :hover .shopping-cart {transform: translateX(0%);}
-
-  span {
-    transition: transform 0.3s;
-    display: inline-block;
-    padding: 10px 20px;
-    font-size: var(--fontMed);
-    margin: 0;
-  }
-
-  .price {
-    transform: translateX(-10%);
-    padding-right: 15px;
-  }
-
-  .shopping-cart {
-    transform: translateX(-100%);
-    position: absolute;
-    background: var(--green);
-    z-index: 1;
-    left: 0;
-    top: 0;
-  }
-
-  .buy {z-index: 3; }
-  
 `;
 
-
-
-
-export const Info = styled.div`
-  background: rgba(27, 26, 26, 0.9);
-  transition: all 0.3s ease-out;
-  transform: translateX(-100%);
+export const Image  = styled.img`
   position: absolute;
-  line-height: 1.8;
-  text-align: left;
-  font-size: var(--fontBig);
-  cursor: none;
-  color: var(--white);
-  height: 100%;
-  width: 100%;
-  left: 0;
-  top: 0;
-  
-  h2 {text-align: center}
-  
-  ul{
-    position: absolute;
-    left: 30px;
-  }
-
-  ul li{transition: 0.3s ease;}
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  width:100%;
+  height:100%;
+  object-fit:cover;
 `;
 
-export const ProductImage  = styled.div`
-  transition: all 0.3s ease-out;
-  display: inline-block;
-  position: relative;
-  overflow: hidden;
+export const Content = styled.div`
+  width: 50vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
   height: 100%;
-  float: right;
-  width: 30%;
-
-  :hover img {transition: all 0.3s ease-out;}
-  :hover img {transform: scale(1.2, 1.2);}
-  :hover ${Info}{transform: translateX(0);}
+  
+  @media screen and (max-width: 720px){
+    width: 100%;
+  }
+  padding: 0 10vw;
 `;

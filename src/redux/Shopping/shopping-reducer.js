@@ -1,12 +1,12 @@
 import * as actionTypes from "./shopping-types";
-import {ServiceData, GoodsData, CategoryData} from "../../testData";
 import {IMMUTABLE_TYPES, TYPES_OF_GOODS} from "./shopping-types";
 
 const INITIAL_STATE = {
     products: [],
-    services: [...ServiceData],
+    services: [],
     categories: [{id: 0}],
-    cart: [], // {id, title, description, price, img, qty}
+    prices: [],
+    cart: [],
     currentItem: null,
     currentCategory: {},
     total_pages: 0,
@@ -17,6 +17,7 @@ const shopReducer = (state = INITIAL_STATE, {type, payload}) => {
     switch (type){
         case actionTypes.ADD_TO_CART:
             let item;
+            //get the items from the products array
             switch(payload.type){
                 case TYPES_OF_GOODS.good:
                     item = state.products.find(prod => prod.id === payload.id);
@@ -27,7 +28,6 @@ const shopReducer = (state = INITIAL_STATE, {type, payload}) => {
                 default:
                     return state;
             }
-            //get the items from the products array
 
             //check if item is in cart already
             const isInCart = state.cart.find(item => item.id === payload.id && item.type === payload.type);
@@ -77,6 +77,16 @@ const shopReducer = (state = INITIAL_STATE, {type, payload}) => {
             return {
                 ...state,
                 products: payload
+            };
+        case actionTypes.LOAD_SERVICES_FROM_DATABASE:
+            return {
+                ...state,
+                services: payload
+            };
+        case actionTypes.LOAD_PRICES_FROM_DATABASE:
+            return {
+                ...state,
+                prices: payload
             };
         default:
             return state;

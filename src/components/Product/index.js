@@ -4,7 +4,7 @@ import {connect} from "react-redux";
 
 import {addToCart, loadCurrentItem} from "../../redux/Shopping/shopping-actions";
 
-import NoImage from "../../assets/no_image.jpg"
+import NoImage from "../../assets/logo.png";
 import {Container, Image, IMGContainer, Title} from "./Product.styles";
 import Button from "../Button";
 

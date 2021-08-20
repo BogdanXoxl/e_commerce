@@ -1,58 +1,54 @@
 import React from "react";
 import {connect} from "react-redux";
-import {Button, Container, Content, Control, Info, ProductImage, Stars} from "./ServiceItem.styles";
-import NoImage from "../../assets/no_image.jpg";
+import {useHistory} from "react-router-dom";
+import parse from "html-react-parser";
+
+import Button from "../Button";
 import {addToCart} from "../../redux/Shopping/shopping-actions";
 
-const ServiceItem = ({addToCard, ...item}) => {
+import {Container, Image, IMGContainer, Description, Title, Content} from "./ServiceItem.styles";
+import NoImage from "../../assets/logo.png";
+
+const ServiceItem = ({service, inCart, addToCart, }) => {
+    const history = useHistory();
     return (
-        <>
-            <Container>
-                <Content>
-                    <h1>{item.title.toUpperCase()}</h1>
-                    <Stars>
-                        <i className="fa fa-star" aria-hidden="true"></i>
-                        <i className="fa fa-star" aria-hidden="true"></i>
-                        <i className="fa fa-star" aria-hidden="true"></i>
-                        <i className="fa fa-star" aria-hidden="true"></i>
-                        <i className="fa fa-star-o" aria-hidden="true"></i>
-                    </Stars>
-
-                    <p className="information">{item.description}</p>
-
-                    <Control>
-                        <Button onClick={() => addToCard(item.id, item.type)}>
-                            <span className="price">{item.price}</span>
-                            <span className="shopping-cart"><i className="fa fa-shopping-cart" aria-hidden="true"></i></span>
-                            <span className="buy">Заказать</span>
-                        </Button>
-                    </Control>
-                </Content>
-
-                <ProductImage>
-                    <img src={item.img || NoImage} alt=""/>
-                        <Info>
-                            <h2> Description</h2>
-                            <ul>
-                                <li><strong>Height : </strong>5 Ft</li>
-                                <li><strong>Shade : </strong>Olive green</li>
-                                <li><strong>Decoration: </strong>balls and bells</li>
-                                <li><strong>Material: </strong>Eco-Friendly</li>
-
-                            </ul>
-                        </Info>
-                </ProductImage>
-
-            </Container>
-
-        </>
+        <Container>
+            <Content>
+                <Title>{service.title}</Title>
+                <Description>
+                    {service.description? parse(service.description): ''}
+                </Description>
+                {inCart(service)?
+                    <Button
+                        text="Перейти к оформлению"
+                        callback={() => history.push('/cart')}
+                        color={{color: "#fff", bg: "#fe7200"}}
+                    />
+                    :
+                    <Button text="В корзину"
+                            callback={() => addToCart(service.id, service.type)}
+                    />
+                }
+            </Content>
+            <IMGContainer>
+                <Image src={
+                    service.image? service.image.src:
+                        NoImage}/>
+            </IMGContainer>
+        </Container>
     );
 };
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        addToCard: (id, type) => dispatch(addToCart(id, type))
+        addToCart: (id, type) => dispatch(addToCart(id, type))
     };
 };
 
-export default connect(null, mapDispatchToProps)(ServiceItem);
+const mapStateToProps = (state) => {
+    return {
+        inCart: (item) => state.shop.cart.find(el => el.id === item.id && el.type === item.type)
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ServiceItem);

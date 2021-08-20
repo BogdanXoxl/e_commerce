@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 
 import Product from "../../components/Product";
 
-import {Container, FlexWrapper, SideBar, Wrapper} from "./ProductsPage.styles";
+import {Container, FlexWrapper, SideBar, Wrapper, Error} from "./ProductsPage.styles";
 import {loadCategories, loadCurrentCategory, loadProducts} from "../../redux/Shopping/shopping-actions";
 
 
@@ -38,8 +38,10 @@ const ProductsPage = ({products, categories, currentCategory, loadCurrentCategor
                         </ul>
                     </SideBar>
                     <Wrapper>
-                        {products.filter(product => product.categoryID === currentCategory.id)
-                            .map((product) => <Product key={product.id + "category:" + product.categoryID} productData={product}/>)}
+                        {products.length? products.filter(product => product.categoryID === currentCategory.id)
+                            .map((product) => <Product key={product.id + "category:" + product.categoryID} productData={product}/>):
+                            <Error><h1></h1></Error>
+                        }
                     </Wrapper>
                 </FlexWrapper>
                 : ""}

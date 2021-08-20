@@ -8,15 +8,14 @@ import HomeImg from "../../assets/home.jpg"
 import HeroImage from "../../components/HeroImage";
 
 
-import {GoodsData, ServiceData} from "../../testData";//rudiment
 
 const HomePage = () => {
     const [topGoods, setTopGoods] = useState([]);
     const [topServices, setTopServices] = useState([]);
 
     useEffect(() => {
-        setTopGoods([...topGoods, ...GoodsData.slice(0,5)]);
-        setTopServices([...topServices, ...ServiceData.slice(0,5)]);
+        // setTopGoods([...topGoods, ...GoodsData.slice(0,5)]);
+        // setTopServices([...topServices, ...ServiceData.slice(0,5)]);
     }, []);
 
     return (

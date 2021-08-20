@@ -73,3 +73,17 @@ export const loadProducts = () => {
         dispatch({type: actionTypes.LOAD_PRODUCTS_FROM_DATABASE, payload: category});
     }
 };
+
+export const loadServices = () => {
+    return async (dispatch) => {
+        const services = await firebase.getServices();
+        dispatch({type: actionTypes.LOAD_SERVICES_FROM_DATABASE, payload: services});
+    }
+};
+
+export const loadPrices = () => {
+  return async (dispatch) => {
+      const prices = await firebase.getPrices();
+      dispatch({type: actionTypes.LOAD_PRICES_FROM_DATABASE, payload: prices});
+    }
+};

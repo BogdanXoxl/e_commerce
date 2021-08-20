@@ -1,14 +1,64 @@
-import React from "react";
+import React, {useEffect} from "react";
+import {Link, withRouter} from "react-router-dom";
+import {connect} from "react-redux";
+import PriceItem from "../../components/PriceItem";
+import {loadPrices} from "../../redux/Shopping/shopping-actions";
+import {Container, SideBar, Prices, FlexContainer} from "./PricePage.styles";
 
-const PricePage = () => {
+const PricePage = ({prices, loadPrices, ...props}) => {
+
+    useEffect(() => {
+        loadPrices();
+    }, []);
+
+    useEffect(() => {
+        const hash = props.history.location.hash;
+        // Check if there is a hash and if an element with that id exists
+        const el = hash && document.getElementById(hash.substr(1));
+        if (el) {
+            el.scrollIntoView({behavior: "smooth", block: "center"});
+        }
+    }, [props.history.location.hash])
+
     return (
-        <>
-            <h1 style={{
-                paddingTop: "300px",
-                color: "red"
-            }}>Price Page</h1>
-        </>
-    );
-}
+        <Container>
+            <h2>Наши цены</h2>
+            <FlexContainer>
+                <SideBar>
+                    <ul>
+                        <li className="title">Меню</li>
+                        {prices? prices.map(price => (
+                            <Link to={`#${price.title}`}><li>{price.title}</li></Link>
+                        )): ""}
 
-export default PricePage;
+                    </ul>
+                </SideBar>
+
+                <Prices>
+                    {
+                        prices?
+                            prices.map((price) => (
+                                <PriceItem item={price} key={price.title}/>
+                            )):
+                            ""
+                    }
+                </Prices>
+            </FlexContainer>
+
+        </Container>
+    );
+};
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        loadPrices: () => dispatch(loadPrices()),
+    };
+};
+
+const mapStateToProps = (state) => {
+    return {
+        prices: state.shop.prices,
+    };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(PricePage));

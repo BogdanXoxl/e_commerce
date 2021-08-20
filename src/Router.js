@@ -22,7 +22,7 @@ const Router = () => (
             <Route path="/goods/:category" exact render={() => <ProductsPage/>} />
 
             <Route path="/product/:id" exact render={() => <ProductInfoPage/>} />
-            <Route path="/service/" exact render={() => <ServicesPage/>} />
+            <Route path="/service" exact render={() => <ServicesPage/>} />
             <Route path="/price" render={() => <PricePage/>} />
             <Route path="/about" render={() => <AboutUsPage/>} />
             <Route path="/cart" render={() => <CartPage/>} />

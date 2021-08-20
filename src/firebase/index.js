@@ -54,6 +54,24 @@ class Firebase {
         console.log(category);
         return category;
     }
+
+    async getServices(){
+        let servicesArray = [];
+        const services = await firebase.firestore().collection('Services').get();
+        services.forEach(doc => {
+            servicesArray.push({id: doc.id, ...doc.data()});
+        });
+        return servicesArray;
+    }
+
+    async getPrices(){
+        let pricesArray = [];
+        const prices = await firebase.firestore().collection('Prices').get();
+        prices.forEach(doc => {
+            pricesArray.push({id: doc.id, ...doc.data()});
+        });
+        return pricesArray;
+    }
 }
 
 export default new Firebase();

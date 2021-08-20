@@ -46,7 +46,8 @@ export const PriceShow = (props) => (
             <ArrayField source="goods">
                 <Datagrid>
                     <TextField source="size" label="Размер"/>
-                    <TextField source="price" label="Цена"/>
+                    <TextField source="price" label="Стоимость бруса"/>
+                    <TextField source="price_installation" label="Стоимость установки"/>
                 </Datagrid>
             </ArrayField>
         </SimpleShowLayout>
@@ -61,7 +62,8 @@ export const PriceCreate = (props) => (
             <ArrayInput source="goods" >
                 <SimpleFormIterator>
                     <TextInput source="size" label="Размер"/>
-                    <TextInput source="price" label="Цена"/>
+                    <TextInput source="price" label="Стоимость бруса"/>
+                    <TextInput source="price_installation" label="Стоимость установки"/>
                 </SimpleFormIterator>
             </ArrayInput>
         </SimpleForm>
@@ -77,7 +79,8 @@ export const PriceEdit = (props) => (
             <ArrayInput source="goods" >
                 <SimpleFormIterator>
                     <TextInput source="size" label="Размер"/>
-                    <TextInput source="price" label="Цена"/>
+                    <TextInput source="price" label="Стоимость бруса"/>
+                    <TextInput source="price_installation" label="Стоимость установки"/>
                 </SimpleFormIterator>
             </ArrayInput>
         </SimpleForm>

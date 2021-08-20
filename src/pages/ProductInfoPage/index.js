@@ -17,7 +17,7 @@ import {
     BtnContainer, IMGContainer
 } from "./ProductInfoPage.styles";
 
-import NoImage from "../../assets/no_image.jpg";
+import NoImage from "../../assets/logo.png";
 
 
 

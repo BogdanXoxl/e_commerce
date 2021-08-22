@@ -1,12 +1,24 @@
 import * as actionTypes from "./shopping-types";
 import {IMMUTABLE_TYPES, TYPES_OF_GOODS} from "./shopping-types";
 
+
+const _cartFromLocalStorage = () => {
+    const cart = JSON.parse(localStorage.getItem('cart'));
+    console.log(cart)
+    if(typeof cart === 'undefined' || cart === null){
+        localStorage.setItem('cart', JSON.stringify([]));
+        return [];
+    }
+    else
+        return cart;
+}
+
 const INITIAL_STATE = {
     products: [],
     services: [],
     categories: [{id: 0}],
     prices: [],
-    cart: [],
+    cart: _cartFromLocalStorage(),
     currentItem: null,
     currentCategory: {},
     total_pages: 0,
@@ -47,6 +59,11 @@ const shopReducer = (state = INITIAL_STATE, {type, payload}) => {
                 ...state,
                 cart:
                     state.cart.filter(item => !(item.id === payload.id && item.type === payload.type))
+            };
+        case actionTypes.ADD_ORDER_TO_DATABASE:
+            return {
+                ...state,
+                cart: []
             };
         case actionTypes.ADJUST_QTY:
             return {

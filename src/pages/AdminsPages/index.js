@@ -12,6 +12,7 @@ import {ProductCreate, ProductEdit, ProductsList, ProductShow} from "./products"
 import {CategoriesList, CategoryCreate, CategoryEdit, CategoryShow} from "./categories";
 import {ServiceCreate, ServiceEdit, ServiceShow, ServicesList} from "./services";
 import {PriceCreate, PriceEdit, PriceShow, PricesList} from "./prices";
+import {OrderEdit, OrderShow, OrdersList} from "./orders";
 
 
 
@@ -28,6 +29,12 @@ const AdminPage = () => {
             dataProvider={dataProvider}
             authProvider={authProvider}
         >
+            <Resource
+                name="Orders"
+                list={OrdersList}
+                show={OrderShow}
+                edit={OrderEdit}
+            />
             <Resource
                 name="Products"
                 list={ProductsList}

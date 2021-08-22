@@ -76,5 +76,8 @@ export const Prices = styled.div`
 
   @media screen and (max-width: 720px){
     width: 100vw;
+    max-width: 100vw;
+    overflow: hidden;
+    margin: 1px;
   }
 `;

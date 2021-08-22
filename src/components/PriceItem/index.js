@@ -20,8 +20,8 @@ const PriceItem = ({item}) => {
                         <tr key={index+i.size}>
                             <td>{index + 1}</td>
                             <td>{i.size}</td>
-                            <td>{i.price}</td>
-                            <td>{i.price_installation}</td>
+                            <td>{i.price? i.price: "Договорная"}</td>
+                            <td>{i.price_installation? i.price_installation: "Договорная"}</td>
                         </tr>
                     )): ""}
 

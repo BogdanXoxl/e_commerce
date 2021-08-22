@@ -3,7 +3,7 @@ import {withRouter} from "react-router-dom";
 import {connect} from "react-redux";
 import parse from "html-react-parser";
 
-import {addToCart, loadCurrentItemById} from "../../redux/Shopping/shopping-actions";
+import {addToCart, loadCurrentItemById, loadCurrentItem} from "../../redux/Shopping/shopping-actions";
 
 import Button from "../../components/Button"
 import {
@@ -21,15 +21,13 @@ import NoImage from "../../assets/logo.png";
 
 
 
-const ProductInfoPage = ({item, inCart, addToCart, loadCurrentItemById, ...props}) => {
+const ProductInfoPage = ({item, inCart, addToCart, loadCurrentItemById, loadCurrentItem, ...props}) => {
     useEffect(() => {
-        console.log(props);
-        window.scroll(0,0)}, []);
-
-    useEffect(() => {
+        window.scroll(0,0)
         if(!item){
             loadCurrentItemById(props.match.params.id);
         }
+        return () => loadCurrentItem(null);
     }, []);
 
     return (
@@ -48,7 +46,7 @@ const ProductInfoPage = ({item, inCart, addToCart, loadCurrentItemById, ...props
                                             :""}
 
                                         {item.sizes && item.sizes.map(({size}) => (
-                                            <SizeButton key={size}>{size}</SizeButton>//onClick
+                                            <SizeButton key={size}>{size}</SizeButton>
                                         ))}
                                     </BtnContainer>
                                     <span>Сорт: {item.sort}</span>
@@ -58,7 +56,7 @@ const ProductInfoPage = ({item, inCart, addToCart, loadCurrentItemById, ...props
                                 </Info>
                                 <BtnWrapper>
                                     <p>Цена: {item? item.price: ''} руб.</p>
-                                    {inCart?
+                                    {inCart(item)?
                                         <Button
                                             text="Перейти к оформлению"
                                             callback={() => props.history.push('/cart')}
@@ -84,14 +82,15 @@ const ProductInfoPage = ({item, inCart, addToCart, loadCurrentItemById, ...props
 const mapStateToProps = (state) => {
     return {
         item: state.shop.currentItem,
-        inCart: state.shop.cart.find(el => el.id === state.shop.currentItem.id && el.type === state.shop.currentItem.type)
+        inCart: (item) => state.shop.cart.find(el => el.id === item.id && el.type === item.type)
     };
 };
 
 const mapDispatchToProps = (dispatch) => {
     return {
         addToCart: (id, type) =>  dispatch(addToCart(id, type)),
-        loadCurrentItemById: (id) => dispatch(loadCurrentItemById(id))
+        loadCurrentItemById: (id) => dispatch(loadCurrentItemById(id)),
+        loadCurrentItem: (item) => dispatch(loadCurrentItem(item))
     };
 };
 

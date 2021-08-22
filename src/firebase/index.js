@@ -2,6 +2,7 @@ import firebase from "firebase";
 import "firebase/auth"
 
 import {firebaseConfig} from "./config";
+import {TYPES_OF_GOODS} from "../redux/Shopping/shopping-types";
 
 
 class Firebase {
@@ -71,6 +72,19 @@ class Firebase {
             pricesArray.push({id: doc.id, ...doc.data()});
         });
         return pricesArray;
+    }
+
+    async addOrder(userData, cart){
+        await this.db.collection('Orders').add({
+            username: userData.username,
+            email: userData.email,
+            tel: userData.tel,
+            check: userData.price,
+            cart: {
+                products: cart.filter((el) => el.type === TYPES_OF_GOODS.good),
+                services: cart.filter((el) => el.type === TYPES_OF_GOODS.service)
+            }
+        });
     }
 }
 

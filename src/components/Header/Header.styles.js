@@ -7,6 +7,7 @@ export const Container = styled.div`
   z-index: 20;
   background: var(--white);
   position: fixed;
+  box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
 `;
 
 

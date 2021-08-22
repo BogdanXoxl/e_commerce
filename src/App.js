@@ -13,7 +13,7 @@ const App = () => {
     <Switch>
         <Route path="/admin" exact component={AdminPage}/>
         <Provider store={store}>
-            <Route path component={Router}/>
+            <Route component={Router}/>
         </Provider>
     </Switch>
   );

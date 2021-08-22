@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import {Link} from "react-router-dom";
 import {connect} from "react-redux";
 
@@ -8,7 +8,10 @@ import Search from "../Search";
 
 
 
-const Header = ({qty}) => {
+const Header = ({cart}) => {
+    useEffect(() => {
+        localStorage.setItem('cart', JSON.stringify(cart));
+    }, [cart]);
 
     return (
         <Container>
@@ -26,7 +29,7 @@ const Header = ({qty}) => {
                     <Button bg={"green"} to="/cart">
                         <i className="fas fa-shopping-basket"></i>
                     </Button>
-                    {qty? <span>{qty}</span>: null}
+                    {cart.length? <span>{cart.length}</span>: null}
 
                 </ButtonContainer>
             </Wrapper>
@@ -36,7 +39,7 @@ const Header = ({qty}) => {
 
 const mapStateToProps = (state) => {
     return{
-        qty: state.shop.cart.length,
+        cart: state.shop.cart
     };
 };
 

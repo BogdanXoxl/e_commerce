@@ -1,5 +1,6 @@
 import * as actionTypes from "./shopping-types";
 import firebase from "../../firebase/index";
+import {ADD_ORDER_TO_DATABASE} from "./shopping-types";
 
 export const addToCart = (itemID, typeOfItem) => {
     return {
@@ -86,4 +87,11 @@ export const loadPrices = () => {
       const prices = await firebase.getPrices();
       dispatch({type: actionTypes.LOAD_PRICES_FROM_DATABASE, payload: prices});
     }
+};
+
+export const addOrder = (userData, Cart) => {
+    firebase.addOrder(userData, Cart);
+    return {
+        type:actionTypes.ADD_ORDER_TO_DATABASE
+    };
 };

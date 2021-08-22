@@ -13,7 +13,7 @@ const Product = ({productData, inCart, addToCart, loadCurrentItem}) => {
 
     return (
             <Container>
-                <Link to={`/product/${productData.id}`} onClick={() => loadCurrentItem(productData)}>
+                <Link to={`${productData.type}/${productData.id}`} onClick={() => loadCurrentItem(productData)}>
                     <IMGContainer>
                         <Image src={productData.image && productData.image.src? productData.image.src : NoImage}/>
                     </IMGContainer>

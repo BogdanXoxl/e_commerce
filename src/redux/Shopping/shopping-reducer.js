@@ -4,7 +4,6 @@ import {IMMUTABLE_TYPES, TYPES_OF_GOODS} from "./shopping-types";
 
 const _cartFromLocalStorage = () => {
     const cart = JSON.parse(localStorage.getItem('cart'));
-    console.log(cart)
     if(typeof cart === 'undefined' || cart === null){
         localStorage.setItem('cart', JSON.stringify([]));
         return [];

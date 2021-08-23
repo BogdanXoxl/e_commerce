@@ -3,17 +3,20 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@hookform/resolvers": "^2.8.0",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
     "bootstrap": "^5.1.0",
     "firebase": "^8.9.1",
     "html-react-parser": "^1.2.8",
+    "libphonenumber-js": "^1.9.24",
     "ra-input-rich-text": "^3.17.0",
     "react": "^17.0.2",
     "react-admin": "^3.17.2",
     "react-admin-firebase": "^3.2.24",
     "react-dom": "^17.0.2",
+    "react-hook-form": "^7.13.0",
     "react-redux": "^7.2.4",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
@@ -21,7 +24,9 @@
     "redux-devtools-extension": "^2.13.9",
     "redux-thunk": "^2.3.0",
     "styled-components": "^5.3.0",
-    "web-vitals": "^1.1.2"
+    "sweetalert2": "^11.1.4",
+    "web-vitals": "^1.1.2",
+    "yup": "^0.32.9"
   },
   "scripts": {
     "start": "react-scripts start",

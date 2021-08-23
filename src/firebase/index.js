@@ -80,6 +80,8 @@ class Firebase {
             email: userData.email,
             tel: userData.tel,
             check: userData.price,
+            date: Date(),
+            status: false,
             cart: {
                 products: cart.filter((el) => el.type === TYPES_OF_GOODS.good),
                 services: cart.filter((el) => el.type === TYPES_OF_GOODS.service)

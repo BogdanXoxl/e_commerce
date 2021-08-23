@@ -11,7 +11,16 @@ import {
     ShowButton,
     EditButton,
     DeleteButton,
-    SelectInput, Filter, ReferenceField, BooleanField, ArrayField, ImageField, RichTextField
+    EmailField,
+    Filter,
+    ReferenceField,
+    BooleanField,
+    ArrayField,
+    ImageField,
+    RichTextField,
+    DateField,
+    NumberField,
+    BooleanInput
 } from "react-admin";
 
 const OrdersTitle = ({ record }) => (
@@ -27,9 +36,11 @@ const OrdersFilter = (props) => (
 export const OrdersList = (props) => (
     <List {...props} filters={<OrdersFilter/>}>
         <Datagrid>
+            <DateField source="date" showTime/>
             <TextField source="username" />
-            <TextField source="email" />
-            <TextField source="check" />
+            <EmailField source="email" />
+            <NumberField source="check" />
+            <BooleanField source="status"/>
 
             <ShowButton label="" />
             <EditButton label="" />
@@ -41,10 +52,12 @@ export const OrdersList = (props) => (
 export const OrderShow = (props) => (
     <Show title={<OrdersTitle/>}{...props}>
         <SimpleShowLayout>
-            <TextField source="username" label="Имя"/>
-            <TextField source="email" />
+            <BooleanField source="status"/>
+            <TextField source="username" />
+            <EmailField source="email" />
+            <DateField source="date" showTime/>
             <TextField source="tel" label="Телефон"/>
-            <TextField source="check" label="Товаров на сумму:"/>
+            <NumberField source="check" label="Товаров на сумму:"/>
             <ArrayField source="cart.products" label="Товары">
                 <Datagrid>
                     <ReferenceField source="id" reference="Products">
@@ -87,6 +100,7 @@ export const OrderEdit = (props) => (
             <TextInput source="username" />
             <TextInput source="email" />
             <TextInput source="tel" />
+            <BooleanInput source="status"/>
         </SimpleForm>
     </Edit>
 );

@@ -3,12 +3,14 @@ import styled from "styled-components";
 export const Container = styled.div`
   max-width: var(--maxWidth);
   padding-top: 14vh;
+  min-height: 50vh;
   margin: 0 auto 1rem;
 
   h2{
     font-size: var(--fontSuperBig);
-    margin: 0 auto 1rem;
+    margin: 0 auto 3rem;
     text-align: center;
+    border-bottom: 1px solid var(--grey);
   }
   
   .title{
@@ -73,6 +75,7 @@ export const Prices = styled.div`
   gap: 1rem;
 
   width: 50vw;
+  margin: 0 auto;
 
   @media screen and (max-width: 720px){
     width: 100vw;

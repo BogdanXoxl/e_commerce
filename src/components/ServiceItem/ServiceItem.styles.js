@@ -41,7 +41,7 @@ export const Title  = styled.h3`
   font-size: var(--fontMed);
   font-weight: var(--fontWBold);
   text-transform: uppercase;
-  margin: 3rem 0;
+  margin: 3rem 0 1rem;
 `;
 
 export const Description  = styled.div`
@@ -51,7 +51,7 @@ export const Description  = styled.div`
 export const IMGContainer  = styled.div`
   position: relative;
   overflow:hidden;
-  height: 35vh;
+  min-height: 35vh;
   width: 30vw;
   border-radius: 7px;
 

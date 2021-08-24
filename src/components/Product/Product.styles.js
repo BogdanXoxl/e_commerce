@@ -18,6 +18,10 @@ export const Container = styled.div`
   button{
     margin: 1rem auto;
   }
+  
+  @media screen and (min-width: 720px){
+    height: 52vh;
+  }
 `;
 
 

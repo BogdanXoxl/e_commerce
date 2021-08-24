@@ -2,6 +2,7 @@ import React, {useEffect, useState} from "react";
 import {connect} from "react-redux";
 import {useForm} from "react-hook-form";
 import * as Yup from 'yup';
+import Swal from 'sweetalert2'
 
 import {addOrder} from "../../redux/Shopping/shopping-actions";
 
@@ -60,6 +61,12 @@ const OrderForm = ({cart, addOrder}) => {
                 price: totalPrice,
             }, cart);
             reset();
+            Swal.fire({
+                title: 'Спасибо за заказ!',
+                text: 'В ближайшее время вам позвонит наш сотрудник для уточнения деталей заказа.',
+                icon: 'success',
+                confirmButtonText: 'Ok'
+            });
         }else
         {}//some code
     };

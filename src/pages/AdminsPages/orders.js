@@ -20,7 +20,7 @@ import {
     RichTextField,
     DateField,
     NumberField,
-    BooleanInput
+    BooleanInput, required
 } from "react-admin";
 
 const OrdersTitle = ({ record }) => (
@@ -77,7 +77,7 @@ export const OrderShow = (props) => (
                     {/*        <TextField source="size" />*/}
                     {/*    </Datagrid>*/}
                     {/*</ArrayField>*/}
-                    <ImageField source="image.src" title="title" label="Image"/>
+                    {/*<ImageField source="image.src" title="title" label="Image"/>*/}
                     {/*<RichTextField source="description" />*/}
                 </Datagrid>
             </ArrayField>
@@ -97,10 +97,10 @@ export const OrderShow = (props) => (
 export const OrderEdit = (props) => (
     <Edit title={<OrdersTitle/>} {...props}>
         <SimpleForm>
-            <TextInput source="username" />
-            <TextInput source="email" />
-            <TextInput source="tel" />
-            <BooleanInput source="status"/>
+            <TextInput source="username" validate={required()}/>
+            <TextInput source="email" validate={required()}/>
+            <TextInput source="tel" validate={required()}/>
+            <BooleanInput source="status" validate={required()}/>
         </SimpleForm>
     </Edit>
 );

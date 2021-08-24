@@ -14,7 +14,7 @@ import {
     DeleteButton,
     SimpleFormIterator,
     ArrayInput,
-    ArrayField, Filter
+    ArrayField, Filter, required
 } from "react-admin";
 
 const PriceTitle = ({ record }) => (
@@ -61,7 +61,7 @@ export const PriceCreate = (props) => (
             <TextInput source="title" />
             <ArrayInput source="goods" >
                 <SimpleFormIterator>
-                    <TextInput source="size" label="Размер"/>
+                    <TextInput source="size" label="Размер" validate={required()}/>
                     <TextInput source="price" label="Стоимость бруса"/>
                     <TextInput source="price_installation" label="Стоимость установки"/>
                 </SimpleFormIterator>
@@ -78,9 +78,9 @@ export const PriceEdit = (props) => (
             <TextInput source="title" />
             <ArrayInput source="goods" >
                 <SimpleFormIterator>
-                    <TextInput source="size" label="Размер"/>
-                    <TextInput source="price" label="Стоимость бруса"/>
-                    <TextInput source="price_installation" label="Стоимость установки"/>
+                    <TextInput source="size" label="Размер" validate={required()}/>
+                    <TextInput source="price" label="Стоимость бруса" validate={required()}/>
+                    <TextInput source="price_installation" label="Стоимость установки" validate={required()}/>
                 </SimpleFormIterator>
             </ArrayInput>
         </SimpleForm>

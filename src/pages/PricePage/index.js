@@ -8,6 +8,7 @@ import {Container, SideBar, Prices, FlexContainer} from "./PricePage.styles";
 const PricePage = ({prices, loadPrices, ...props}) => {
 
     useEffect(() => {
+        window.scroll(0,0);
         loadPrices();
     }, []);
 
@@ -27,8 +28,8 @@ const PricePage = ({prices, loadPrices, ...props}) => {
                 <SideBar>
                     <ul>
                         <li className="title">Меню</li>
-                        {prices? prices.map(price => (
-                            <Link to={`#${price.title}`}><li>{price.title}</li></Link>
+                        {prices? prices.map((price, i) => (
+                            <Link to={`#${price.title}`} key={i}><li>{price.title}</li></Link>
                         )): ""}
 
                     </ul>

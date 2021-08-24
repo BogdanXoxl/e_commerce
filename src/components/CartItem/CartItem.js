@@ -2,6 +2,7 @@ import React from "react";
 import {connect} from "react-redux";
 import parse from "html-react-parser";
 import {Link} from "react-router-dom";
+import Swal from "sweetalert2";
 
 import {adjustQty, removeFromCart} from "../../redux/Shopping/shopping-actions";
 
@@ -15,20 +16,33 @@ import {
     Price, Qty,
     Title
 } from "./CartItem.styles";
-import {IMMUTABLE_TYPES, TYPES_OF_GOODS} from "../../redux/Shopping/shopping-types";
+import {IMMUTABLE_TYPES} from "../../redux/Shopping/shopping-types";
 
 const CartItem = ({item, isImmutable,  adjustQty, removeFromCart}) => {
 
     const increaseCount = () => {
         adjustQty(item.id, item.type, item.qty+1);
     }
+    const deleteBtn = (item) => {
+        Swal.fire({
+            title: 'Вы хотите удалить товар из корзины?',
+            showCancelButton: true,
+            confirmButtonText: `Да`,
+            cancelButtonText: 'Нет'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                removeFromCart(item.id, item.type);
+                Swal.fire('Удалено!', '', 'success');
+            }
+        })
+    }
+
 
     const decreaseCount = () => {
         if(item.qty > 1)
             adjustQty(item.id, item.type, item.qty-1);
         else
-            if(window.confirm(`Вы хотите удалить ${item.title} из корзины?`))
-                removeFromCart(item.id, item.type);
+            deleteBtn(item);
     }
 
   return (
@@ -54,7 +68,7 @@ const CartItem = ({item, isImmutable,  adjustQty, removeFromCart}) => {
             </Qty>
             }
 
-            <DeleteBtn onClick={() => window.confirm(`Вы хотите удалить ${item.title} из корзины? `)?removeFromCart(item.id, item.type): ""}>
+            <DeleteBtn onClick={() => deleteBtn(item)}>
                 Удалить <i className="fas fa-trash"></i>
             </DeleteBtn>
         </InfoContainer>

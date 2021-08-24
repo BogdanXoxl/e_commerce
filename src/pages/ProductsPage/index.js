@@ -9,6 +9,7 @@ import {loadCategories, loadCurrentCategory, loadProducts} from "../../redux/Sho
 
 
 const ProductsPage = ({products, categories, currentCategory, loadCurrentCategory, loadProducts, loadCategories}) => {
+    window.scroll(0,0);
     useEffect(() => {
         loadProducts();
         loadCategories();
@@ -40,7 +41,7 @@ const ProductsPage = ({products, categories, currentCategory, loadCurrentCategor
                     <Wrapper>
                         {products.length? products.filter(product => product.categoryID === currentCategory.id)
                             .map((product) => <Product key={product.id + "category:" + product.categoryID} productData={product}/>):
-                            <Error><h1>Упсс... твоаров пока нет.</h1></Error>
+                            <Error><h1>Упсс... товаров пока нет.</h1></Error>
                         }
                     </Wrapper>
                 </FlexWrapper>

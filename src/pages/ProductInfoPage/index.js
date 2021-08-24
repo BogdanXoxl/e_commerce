@@ -1,7 +1,7 @@
 import React, {useEffect} from "react";
 import {withRouter} from "react-router-dom";
 import {connect} from "react-redux";
-import parse from "html-react-parser";
+import parse, {attributesToProps} from "html-react-parser";
 
 import {addToCart, loadCurrentItemById, loadCurrentItem} from "../../redux/Shopping/shopping-actions";
 
@@ -22,13 +22,24 @@ import NoImage from "../../assets/logo.png";
 
 
 const ProductInfoPage = ({item, inCart, addToCart, loadCurrentItemById, loadCurrentItem, ...props}) => {
+    window.scroll(0,0);
     useEffect(() => {
-        window.scroll(0,0)
+        window.scroll(0,0);
         if(!item){
             loadCurrentItemById(props.match.params.id);
         }
         return () => loadCurrentItem(null);
     }, []);
+
+    const options = {
+        replace: domNode => {
+            console.log(domNode)
+            if (domNode.attribs && domNode.attribs.style !== 'white') {
+                const props = attributesToProps(domNode.attribs);
+                return <p {...props} />;
+            }
+        }
+    };
 
     return (
             <Container>
@@ -49,9 +60,9 @@ const ProductInfoPage = ({item, inCart, addToCart, loadCurrentItemById, loadCurr
                                             <SizeButton key={size}>{size}</SizeButton>
                                         ))}
                                     </BtnContainer>
-                                    <span>Сорт: {item.sort}</span>
+                                    {item.sort && <span>Сорт: {item.sort}</span>}
                                     <Description>
-                                        {item && item.description? parse(item.description): ""}
+                                        {item && parse(item.description || "", options)}
                                     </Description>
                                 </Info>
                                 <BtnWrapper>

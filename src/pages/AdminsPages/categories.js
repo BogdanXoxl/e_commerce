@@ -13,7 +13,7 @@ import {
     ShowButton,
     EditButton,
     DeleteButton,
-    SelectInput, Filter
+    SelectInput, Filter, required
 } from "react-admin";
 
 const CategoryTitle = ({ record }) => (
@@ -29,7 +29,7 @@ const CategoryFilter = (props) => (
 export const CategoriesList = (props) => (
     <List {...props} filters={<CategoryFilter/>}>
         <Datagrid>
-            <TextField source="title" />
+            <TextField source="title"/>
 
             <ShowButton label="" />
             <EditButton label="" />
@@ -51,7 +51,7 @@ export const CategoryShow = (props) => (
 export const CategoryCreate = (props) => (
     <Create {...props} >
         <SimpleForm>
-            <TextInput source="title" />
+            <TextInput source="title" validate={required()}/>
         </SimpleForm>
     </Create>
 );
@@ -59,7 +59,7 @@ export const CategoryCreate = (props) => (
 export const CategoryEdit = (props) => (
     <Edit title={<CategoryTitle/>} {...props}>
         <SimpleForm>
-            <TextInput source="title" />
+            <TextInput source="title" validate={required()}/>
         </SimpleForm>
     </Edit>
 );

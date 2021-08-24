@@ -8,6 +8,7 @@ import {loadServices} from "../../redux/Shopping/shopping-actions";
 
 
 const ServicesPage = ({services, loadServices}) => {
+    window.scroll(0,0);
     useEffect(() => {
         loadServices();
     }, []);
@@ -25,7 +26,7 @@ const ServicesPage = ({services, loadServices}) => {
                         }
                     </>
                 )
-                : (<Error> <h1>Услуг нет</h1></Error>)
+                : ""
             }
         </Container>
     );

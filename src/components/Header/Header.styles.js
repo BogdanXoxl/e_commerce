@@ -4,10 +4,11 @@ import {NavLink, Link} from "react-router-dom"
 export const Container = styled.div`
   width: 100%;
   height: 10vh;
+  min-height: 5rem;
   z-index: 20;
   background: var(--white);
   position: fixed;
-  box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
+  box-shadow: 0 5px 10px 2px rgba(34, 60, 80, 0.2);
 `;
 
 
@@ -17,11 +18,34 @@ export const Wrapper = styled.div`
   margin: 0 auto;
   max-width: var(--maxWidth);
   z-index: 20;
-  position: relative;
   
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 9fr auto auto;
   align-items: center;
-  justify-content: space-between;
+  justify-items: start;
+  
+  @media (max-width: 900px){
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    max-width: var(--maxWidth);
+    z-index: 20;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+  }
+`;
+
+
+export const ToggleBtn = styled.label`
+  display: none;
+  color: var(--green);
+  font-size: var(--fontSuperBig);
+  cursor: pointer;
+
+  @media (max-width: 900px){
+    display: block;
+    grid-column: 11;
+  }
 `;
 
 
@@ -36,9 +60,32 @@ export const Logo = styled.img`
 
 
 export const Nav = styled.nav`
-  flex:1;
-  //position: center;
-  padding-left: 7%;
+    @media(max-width: 900px){
+      position: fixed;
+      width: 100%;
+      height: 100vh;
+      top:10vh;
+      left: -100%;
+      background: var(--white);
+      text-align: center;
+      transition: all .5s;
+      @media(max-height: 650px){
+        top:5rem;
+      }
+      &.active{
+        left: 0;
+      }
+    }
+    
+`;
+
+export const SearchContainer = styled.div`
+  @media (max-width: 900px){
+    grid-column: 9;
+  }
+  @media (max-width: 345px){
+    display: none;
+  }
 `;
 
 
@@ -50,18 +97,29 @@ export const NavLinkStyled = styled(NavLink)`
   border: 1px solid transparent;
   
   &.active{
-    //color: red;
     box-shadow: 0 2px 1px var(--green);
   }
   
   :hover{
-    //text-decoration: underline;
     border-right: 1px solid black;
     border-left: 1px solid black;
   }
 
-  @media screen and (max-width: 1000px){
-    font-size: var(--fontSmall);
+  @media screen and (max-width: 900px){
+    display: block;
+    color: var(--dark);
+    line-height: 5rem;
+    
+    &.active{
+      box-shadow: none;
+      background: var(--green);
+      color: var(--white);
+      border: none;
+    }
+    
+    &:hover{
+      border: none;
+    }
   }
 `;
 
@@ -85,6 +143,10 @@ export const ButtonContainer = styled.div`
     margin-top: -21px;
     padding: 1px;
   }
+  
+  @media (max-width: 900px){
+    grid-column: 10;
+  }
 `;
 
 export const Button = styled(Link)`
@@ -103,11 +165,6 @@ export const Button = styled(Link)`
   
   :hover{
     background: var(${props => props.bg? "--dark"+ props.bg: "--darkSkyBlue"});
-  }
-
-  @media screen and (max-width: 1000px){
-    font-size: var(--fontSmall);
-    border-radius: 20px;
   }
 `;
 

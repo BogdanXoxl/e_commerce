@@ -100,6 +100,7 @@ export const Info = styled.div`
 export const Description = styled.p`
   margin: 10px;
   font-size: var(--fontMed);
+  color: var(--white);
   
   @media screen and (max-width: 720px){
     margin: 0 auto;
@@ -127,6 +128,7 @@ export const BtnWrapper = styled.div`
 export const BtnContainer = styled.div`
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   align-items: center;
   margin: 1rem;
   

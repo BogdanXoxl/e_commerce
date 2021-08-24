@@ -21,14 +21,13 @@ import {
     ImageField,
     BooleanInput,
     ArrayField,
-    ImageInput, SimpleFormIterator, ArrayInput
+    ImageInput, SimpleFormIterator, ArrayInput, required, NumberField, NumberInput
 } from "react-admin";
 import RichTextInput from "ra-input-rich-text";
 
 const ProductTitle = ({ record }) => (
     <span>Product {record ? `"${record.title}"` : ''}</span>
 );
-
 
 const ProductsFilter = (props) => (
     <Filter {...props}>
@@ -43,7 +42,7 @@ export const ProductsList = (props) => (
             <ReferenceField label="Category" source="categoryID" reference="Categories">
                 <TextField source="title" />
             </ReferenceField>
-            <TextField source="price" />
+            <NumberField source="price" />
             <TextField source="sort" />
             <TextField source="material" />
             <BooleanField source="availability"/>
@@ -63,7 +62,7 @@ export const ProductShow = (props) => (
                 <TextField source="title" />
             </ReferenceField>
             <TextField source="title" />
-            <TextField source="price" />
+            <NumberField source="price" />
             <TextField source="sort" />
             <TextField source="material" />
             <BooleanField source="availability"/>
@@ -87,12 +86,12 @@ const productDefaultValue = () => (
 export const ProductCreate = (props) => (
     <Create {...props}>
         <SimpleForm initialValues={productDefaultValue}>
-            <TextInput source="title" />
-            <ReferenceInput label="Category" source="categoryID" reference="Categories">
+            <TextInput source="title" validate={required()}/>
+            <ReferenceInput label="Category" source="categoryID" reference="Categories" validate={required()}>
                 <SelectInput optionText="title" />
             </ReferenceInput>
-            <RichTextInput source="description" />
-            <TextInput source="price" />
+            <RichTextInput source="description" validate={required()}/>
+            <NumberInput source="price" validate={required()}/>
             <TextInput source="sort" />
             <TextInput source="material" />
             <BooleanInput source="availability"/>
@@ -111,12 +110,12 @@ export const ProductCreate = (props) => (
 export const ProductEdit = (props) => (
     <Edit {...props} title={<ProductTitle/>}>
         <SimpleForm>
-            <TextInput source="title" />
-            <ReferenceInput label="Category" source="categoryID" reference="Categories">
+            <TextInput source="title" validate={required()}/>
+            <ReferenceInput label="Category" source="categoryID" reference="Categories" validate={required()}>
                 <SelectInput optionText="title" />
             </ReferenceInput>
-            <RichTextInput source="description" />
-            <TextInput source="price" />
+            <RichTextInput source="description" validate={required()}/>
+            <NumberInput source="price" validate={required()}/>
             <TextInput source="sort" />
             <TextInput source="material" />
             <BooleanInput source="availability"/>

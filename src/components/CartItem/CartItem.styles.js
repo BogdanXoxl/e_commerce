@@ -48,7 +48,7 @@ export const InfoContainer = styled.div`
 `;
 
 export const Title = styled.h3`
-  grid-column: 1/2;
+  grid-column: 1/3;
   grid-row: 1;
   font-size: var(--fontBig);
   margin: 1rem;

@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import {connect} from "react-redux";
 
 
@@ -11,6 +11,10 @@ import OrderForm from "../../components/OrderForm";
 
 
 const CartPage = ({cart}) => {
+    useEffect(() => {
+        window.scroll(0,0);
+    }, []);
+
     return (
         <Container>
             <Wrapper>

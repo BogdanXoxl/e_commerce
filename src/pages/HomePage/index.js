@@ -10,6 +10,7 @@ import HeroImage from "../../components/HeroImage";
 
 
 const HomePage = () => {
+    window.scroll(0,0);
     const [topGoods, setTopGoods] = useState([]);
     const [topServices, setTopServices] = useState([]);
 

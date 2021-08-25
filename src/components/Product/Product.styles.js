@@ -9,6 +9,7 @@ export const Container = styled.div`
   padding: 1rem;
   box-shadow: 0 5px 10px 2px rgba(34, 60, 80, 0.2);
   text-align: center;
+  }
   
   a{
     text-decoration: none;
@@ -43,6 +44,20 @@ export const Image = styled.img`
 
   :hover {
     opacity: 0.7;
+  }
+
+  animation: animatePic 1.6s;
+
+  @keyframes animatePic {
+    0%{
+      opacity: 0;
+    }
+    50%{
+      opacity: 0.1;
+    }
+    100%{
+      opacity: 1;
+    }
   }
 `;
 

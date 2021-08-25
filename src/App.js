@@ -11,7 +11,7 @@ import {Provider} from "react-redux";
 const App = () => {
   return (
     <Switch>
-        <Route path="/admin" exact component={AdminPage}/>
+        <Route path={["/admin", "/Orders","/Products", "/Categories", "/Services", "/Prices", "/AboutUs", "/login"]} component={AdminPage}/>
         <Provider store={store}>
             <Route component={Router}/>
         </Provider>

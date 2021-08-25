@@ -34,7 +34,7 @@ export const Content = styled.div`
 
 export const Text = styled.div`
     z-index: 1;
-    max-width: 700px;
+    max-width: 500px;
     position: absolute;
     bottom: 40px;
     margin-right:  20px;
@@ -51,7 +51,7 @@ export const Text = styled.div`
   
     p{
       font-size: var(--fontMed);
-      
+      margin-top: 1rem;
       @media screen and (max-width: 720px){
         font-size: var(--fontSmall);
       }

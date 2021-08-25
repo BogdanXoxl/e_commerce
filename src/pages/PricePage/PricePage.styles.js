@@ -24,6 +24,17 @@ export const FlexContainer = styled.div`
   display: flex;
   flex-direction: row;
   gap: 1rem;
+
+  animation: animatePic .7s;
+
+  @keyframes animatePic {
+    0%{
+      opacity: 0;
+    }
+    100%{
+      opacity: 1;
+    }
+  }
   
   a{
     text-decoration: none;

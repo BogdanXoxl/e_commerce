@@ -95,6 +95,16 @@ export const IMGContainer = styled.div`
   border-radius: 16px 0 0 16px;
   min-height: 420px;
   background: var(--white);
+  animation: animatePic 1s;
+
+  @keyframes animatePic {
+    from{
+      opacity: 0;
+    }
+    to{
+      opacity: 1;
+    }
+  }
   
   @media screen and (max-width: 720px){
     border-radius: 0;
@@ -116,6 +126,7 @@ export const Description = styled.div`
   
   @media screen and (max-width: 720px){
     margin: 0 auto;
+    padding-left: 1rem;
   }
 `;
 

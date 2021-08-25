@@ -16,6 +16,7 @@ export const Container = styled.div`
 export const Wrapper = styled.div`
   width: 80vw;
   margin-left: 1rem;
+  padding: 1rem 0;
   display: grid;
   grid-template-columns: repeat(auto-fit, 15rem);
   grid-gap: 10px;
@@ -34,7 +35,8 @@ export const Wrapper = styled.div`
   @media screen and (max-width: 940px){
     justify-content: center;
     width: 100vw;
-    margin-left: 0;
+    overflow: hidden;
+    margin: 1rem auto;
     grid-template-columns: repeat(auto-fit, 21rem);
   }
   
@@ -55,6 +57,7 @@ export const FlexWrapper = styled.div`
   }
   
   @media screen and (max-width: 720px){
+    width: 100vw;
     flex-direction: column;
     .hidden-el{
       display: inline-block;
@@ -69,11 +72,11 @@ export const FlexWrapper = styled.div`
 
 export const SideBar = styled.div`
   color: var(--lightGrey);
-  width: 18vw;
+  min-width: 18vw;
   li{
     list-style: none;
     background: var(--dark);
-    padding: .5rem 2rem;
+    padding: .5rem 1rem;
     border-bottom: 1px solid var(--white);
     
     :first-child{padding-top: 1rem;}

@@ -19,7 +19,7 @@ const CartPage = ({cart}) => {
         <Container>
             <Wrapper>
                 {cart.map(item => (
-                    <CartItem key={item.id} item={item} isImmutable={IMMUTABLE_TYPES.includes(item.type)}/>
+                    <CartItem key={item.id || "1"} item={item} isImmutable={IMMUTABLE_TYPES.includes(item.type)}/>
                 ))}
             </Wrapper>
             <OrderForm/>

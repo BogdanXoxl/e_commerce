@@ -74,6 +74,15 @@ class Firebase {
         return pricesArray;
     }
 
+    async getAboutUs(){
+        let aboutUsArray = [];
+        const prices = await firebase.firestore().collection('AboutUs').get();
+        prices.forEach(doc => {
+            aboutUsArray.push({id: doc.id, ...doc.data()});
+        });
+        return aboutUsArray;
+    }
+
     async addOrder(userData, cart){
         await this.db.collection('Orders').add({
             username: userData.username,

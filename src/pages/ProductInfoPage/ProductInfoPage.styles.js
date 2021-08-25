@@ -5,10 +5,8 @@ export const Container = styled.div`
   margin: 0 auto;
   padding-top: 10vh;
   max-width: var(--maxWidth);
-  min-height: 500px;
-  display: flex;
-  flex-direction: row;
-  align-items: stretch;
+  min-height: 70vh;
+
   color: var(--lightGrey);
 
   animation: animateThumb 0.5s;
@@ -33,96 +31,44 @@ export const Container = styled.div`
 `;
 
 
-export const Image = styled.img`
-  position: absolute;
-  top:50%;
-  left:50%;
-  transform:translate(-50%,-50%);
-  width:100%;
-  height:100%;
-  object-fit:cover;
-
-
-  @media screen and (max-width: 720px){
-    width: 100%;
-    margin: 0;
-    border-radius: 0;
-  }
-`;
-
-export const IMGContainer = styled.div`
-  position: relative;
-  overflow:hidden;
-  width:100%;
-  border-radius: 16px;
-  margin: 3px;
-  min-height: 420px;
-  
-  @media screen and (max-width: 720px){
-    height:90vh;
-    border-radius: 0;
-    margin: 0;
-    padding: 0;
-  }
-`;
-
-
 export const Wrapper = styled.div`
   background: var(--dark);
-  border-radius: 30px 0 0 30px;
-  padding: 30px;
+  border-radius: 16px 0 0 16px;
   margin-top: 30px;
-  width: 100vw;
   margin-bottom: 3rem;
 
   box-shadow: 0 0 30px 1px grey;
 
+  display: grid;
+  grid-template-columns: 8fr 4fr;
+  grid-template-rows: minmax(1fr, 2fr) 4fr;
+  gap: 0 0;
+  grid-template-areas: 
+    "Image Info"
+    "Image Description";
+  
   @media screen and (max-width: 720px){
-    padding: 10px;
     margin-top: 0;
     border-radius: 0;
-    width: 100vw;
+
+    grid-template-columns: 1fr;
+    grid-template-rows: minmax(3fr, 480px) 1fr 2fr;
+    gap: 0 0;
+    grid-template-areas: 
+    "Image"
+    "Info"
+    "Description";
+  }
+  
+  h1{
+    grid-area: Title;
+    margin: 1rem;
   }
 `;
-
-
 
 export const Info = styled.div`
-  width: 80%;
-  margin: 20px;
-
-  @media screen and (max-width: 720px){
-    margin: 10px;
-  }
-  
-`;
-
-export const Description = styled.p`
-  margin: 10px;
-  font-size: var(--fontMed);
-  color: var(--white);
-  
-  @media screen and (max-width: 720px){
-    margin: 0 auto;
-  }
-`;
-
-export const SizeButton = styled.div`
-  position: relative;
-  padding: 0 5px;
-  margin: 3px;
-  outline: 1px solid var(--darkgreen);
-  border-radius: 3px;
-  cursor: pointer;
-  
-  
-  :hover{
-    outline-color: var(--green);
-  }
-`;
-
-export const BtnWrapper = styled.div`
-  margin: 1rem;
+  grid-area: Info;
+  padding: 0;
 `;
 
 export const BtnContainer = styled.div`
@@ -134,5 +80,75 @@ export const BtnContainer = styled.div`
   
   span{
     margin-right: 5px;
+  }
+`;
+
+export const Sort = styled.span`
+  max-height: 3rem;
+`;
+
+export const IMGContainer = styled.div`
+  grid-area: Image;
+  
+  position: relative;
+  overflow:hidden;
+  border-radius: 16px 0 0 16px;
+  min-height: 420px;
+  background: var(--white);
+  
+  @media screen and (max-width: 720px){
+    border-radius: 0;
+    margin: 0;
+    padding: 0;
+  }
+`;
+
+
+
+export const Description = styled.div`
+  grid-area: Description;
+  margin: 10px;
+  font-size: var(--fontMed);
+  
+  *{
+    color: var(--white) !important;
+  }
+  
+  @media screen and (max-width: 720px){
+    margin: 0 auto;
+  }
+`;
+
+
+export const BtnWrapper = styled.div`
+  margin: 2rem 1rem;
+`;
+
+export const SizeButton = styled.div`
+  position: relative;
+  padding: 0 5px;
+  margin: 3px;
+  outline: 1px solid var(--darkgreen);
+  border-radius: 3px;
+  cursor: pointer;
+  
+  :hover{
+    outline-color: var(--green);
+  }
+`;
+
+export const Image = styled.img`
+  position: absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  
+  @media screen and (max-width: 720px){
+    width: 100%;
+    margin: 0;
+    border-radius: 0;
   }
 `;

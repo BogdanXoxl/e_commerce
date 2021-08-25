@@ -19,7 +19,7 @@ export const Container = styled.div`
     margin: 1rem auto;
   }
   
-  @media screen and (min-width: 720px){
+  @media (max-height: 720px) and (min-width: 720px){
     height: 52vh;
   }
 `;
@@ -50,7 +50,8 @@ export const IMGContainer = styled.div`
   position: relative;
   overflow:hidden;
   width:100%;
-  height:30vh;
+  height: 280px;
+  max-height:30vh;
   margin: 0 auto;
   border-radius: 7px;
   

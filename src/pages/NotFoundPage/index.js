@@ -1,13 +1,12 @@
 import React from "react";
+import {Container} from "./404.styles";
 
 const NotFoundPage = () => {
     return (
-        <>
-            <h1 style={{
-                paddingTop: "300px",
-                color: "red"
-            }}>404 Page</h1>
-        </>
+        <Container>
+            <h1>404 ERROR</h1>
+            <p>Такой страницы не существует...!</p>
+        </Container>
     );
 }
 

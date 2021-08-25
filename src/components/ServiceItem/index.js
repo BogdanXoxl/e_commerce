@@ -6,7 +6,7 @@ import parse from "html-react-parser";
 import Button from "../Button";
 import {addToCart} from "../../redux/Shopping/shopping-actions";
 
-import {Container, Image, IMGContainer, Description, Title, Content} from "./ServiceItem.styles";
+import {Container, Image, IMGContainer, Description, Title, Content, BtnContainer} from "./ServiceItem.styles";
 import NoImage from "../../assets/logo.png";
 
 const ServiceItem = ({service, inCart, addToCart, }) => {
@@ -19,15 +19,18 @@ const ServiceItem = ({service, inCart, addToCart, }) => {
                     {service.description? parse(service.description): ''}
                 </Description>
                 {inCart(service)?
-                    <Button
-                        text="Перейти к оформлению"
-                        callback={() => history.push('/cart')}
-                        color={{color: "#fff", bg: "#fe7200"}}
-                    />
-                    :
-                    <Button text="В корзину"
-                            callback={() => addToCart(service.id, service.type)}
-                    />
+                    <BtnContainer>
+                        <Button
+                            text="Перейти к оформлению"
+                            callback={() => history.push('/cart')}
+                            color={{color: "#fff", bg: "#fe7200"}}
+                        />
+                    </BtnContainer>
+                    :<BtnContainer>
+                        <Button text="В корзину"
+                                callback={() => addToCart(service.id, service.type)}
+                        />
+                    </BtnContainer>
                 }
             </Content>
             <IMGContainer>

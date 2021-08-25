@@ -9,7 +9,7 @@ export const Container  = styled.div`
   background: var(--white);
   box-shadow: 0 5px 10px 2px rgba(34, 60, 80, 0.2);
   max-width: var(--maxWidth);
-  margin: 1rem;
+  margin: 1rem auto;
 
   animation: animateThumb .5s;
 
@@ -45,13 +45,14 @@ export const Title  = styled.h3`
 `;
 
 export const Description  = styled.div`
-    text-align: left;
+    width: 100%;
 `;
 
 export const IMGContainer  = styled.div`
   position: relative;
   overflow:hidden;
-  min-height: 35vh;
+  max-height: 35vh;
+  //max-height: 300px;
   width: 30vw;
   border-radius: 7px;
 
@@ -73,15 +74,18 @@ export const Image  = styled.img`
 `;
 
 export const Content = styled.div`
-  width: 50vw;
+  width: 80vw;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  align-items: center;
   height: 100%;
   
   @media screen and (max-width: 720px){
     width: 100%;
   }
-  padding: 0 10vw;
+  padding: 0 5vw;
+`;
+
+export const BtnContainer = styled.div`
+  
 `;

@@ -13,6 +13,7 @@ import {CategoriesList, CategoryCreate, CategoryEdit, CategoryShow} from "./cate
 import {ServiceCreate, ServiceEdit, ServiceShow, ServicesList} from "./services";
 import {PriceCreate, PriceEdit, PriceShow, PricesList} from "./prices";
 import {OrderEdit, OrderShow, OrdersList} from "./orders";
+import {AboutUsCreate, AboutUsEdit, AboutUsList, AboutUsShow} from "./aboutus";
 
 
 
@@ -62,6 +63,13 @@ const AdminPage = () => {
                 show={PriceShow}
                 create={PriceCreate}
                 edit={PriceEdit}
+            />
+            <Resource
+                name="AboutUs"
+                list={AboutUsList}
+                show={AboutUsShow}
+                create={AboutUsCreate}
+                edit={AboutUsEdit}
             />
         </Admin>
     );

@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/e_commerce/static/css/main.aa494008.chunk.css",
-    "main.js": "/e_commerce/static/js/main.3b7447ac.chunk.js",
-    "main.js.map": "/e_commerce/static/js/main.3b7447ac.chunk.js.map",
+    "main.js": "/e_commerce/static/js/main.bde8ca29.chunk.js",
+    "main.js.map": "/e_commerce/static/js/main.bde8ca29.chunk.js.map",
     "runtime-main.js": "/e_commerce/static/js/runtime-main.ccf087f5.js",
     "runtime-main.js.map": "/e_commerce/static/js/runtime-main.ccf087f5.js.map",
     "static/js/2.a989cc0d.chunk.js": "/e_commerce/static/js/2.a989cc0d.chunk.js",
@@ -11,6 +11,7 @@
     "static/css/main.aa494008.chunk.css.map": "/e_commerce/static/css/main.aa494008.chunk.css.map",
     "static/js/2.a989cc0d.chunk.js.LICENSE.txt": "/e_commerce/static/js/2.a989cc0d.chunk.js.LICENSE.txt",
     "static/media/Vector_23.84ffa42a.png": "/e_commerce/static/media/Vector_23.84ffa42a.png",
+    "static/media/banya.8499899c.jpg": "/e_commerce/static/media/banya.8499899c.jpg",
     "static/media/board.aef7e410.png": "/e_commerce/static/media/board.aef7e410.png",
     "static/media/font-awesome.min.css": "/e_commerce/static/media/fontawesome-webfont.f691f37e.woff",
     "static/media/logo.d3215513.png": "/e_commerce/static/media/logo.d3215513.png",
@@ -20,6 +21,6 @@
     "static/js/runtime-main.ccf087f5.js",
     "static/js/2.a989cc0d.chunk.js",
     "static/css/main.aa494008.chunk.css",
-    "static/js/main.3b7447ac.chunk.js"
+    "static/js/main.bde8ca29.chunk.js"
   ]
 }

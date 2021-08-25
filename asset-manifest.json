@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/e_commerce/static/css/main.aa494008.chunk.css",
-    "main.js": "/e_commerce/static/js/main.71c5243b.chunk.js",
-    "main.js.map": "/e_commerce/static/js/main.71c5243b.chunk.js.map",
+    "main.js": "/e_commerce/static/js/main.7d6e001d.chunk.js",
+    "main.js.map": "/e_commerce/static/js/main.7d6e001d.chunk.js.map",
     "runtime-main.js": "/e_commerce/static/js/runtime-main.ccf087f5.js",
     "runtime-main.js.map": "/e_commerce/static/js/runtime-main.ccf087f5.js.map",
     "static/js/2.d34a8120.chunk.js": "/e_commerce/static/js/2.d34a8120.chunk.js",
@@ -10,7 +10,7 @@
     "index.html": "/e_commerce/index.html",
     "static/css/main.aa494008.chunk.css.map": "/e_commerce/static/css/main.aa494008.chunk.css.map",
     "static/js/2.d34a8120.chunk.js.LICENSE.txt": "/e_commerce/static/js/2.d34a8120.chunk.js.LICENSE.txt",
-    "static/media/Vector 23.84ffa42a.png": "/e_commerce/static/media/Vector 23.84ffa42a.png",
+    "static/media/Vector_23.84ffa42a.png": "/e_commerce/static/media/Vector_23.84ffa42a.png",
     "static/media/board.aef7e410.png": "/e_commerce/static/media/board.aef7e410.png",
     "static/media/font-awesome.min.css": "/e_commerce/static/media/fontawesome-webfont.f691f37e.woff",
     "static/media/logo.d3215513.png": "/e_commerce/static/media/logo.d3215513.png",
@@ -20,6 +20,6 @@
     "static/js/runtime-main.ccf087f5.js",
     "static/js/2.d34a8120.chunk.js",
     "static/css/main.aa494008.chunk.css",
-    "static/js/main.71c5243b.chunk.js"
+    "static/js/main.7d6e001d.chunk.js"
   ]
 }

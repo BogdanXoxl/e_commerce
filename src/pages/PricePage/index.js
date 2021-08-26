@@ -4,13 +4,14 @@ import {connect} from "react-redux";
 import PriceItem from "../../components/PriceItem";
 import {loadPrices} from "../../redux/Shopping/shopping-actions";
 import {Container, SideBar, Prices, FlexContainer} from "./PricePage.styles";
+import Loading from "../../components/Loading";
 
-const PricePage = ({prices, loadPrices, ...props}) => {
+const PricePage = ({prices, isFetching, loadPrices, ...props}) => {
 
     useEffect(() => {
         window.scroll(0,0);
         loadPrices();
-    }, []);
+    }, [loadPrices]);
 
     useEffect(() => {
         const hash = props.history.location.hash;
@@ -22,31 +23,39 @@ const PricePage = ({prices, loadPrices, ...props}) => {
     }, [props.history.location.hash])
 
     return (
-        <Container>
-            <h2>Наши цены</h2>
-            <FlexContainer>
-                <SideBar>
-                    <ul>
-                        <li className="title">Меню</li>
-                        {prices? prices.map((price, i) => (
-                            <Link to={`#${price.title}`} key={i}><li>{price.title}</li></Link>
-                        )): ""}
+        <>
+            {isFetching ?
+                <Loading/>
+                :
+                <Container>
+                    <h2>Наши цены</h2>
+                    <FlexContainer>
+                        <SideBar>
+                            <ul>
+                                <li className="title">Меню</li>
+                                {prices ? prices.map((price, i) => (
+                                    <Link to={`#${price.title}`} key={i}>
+                                        <li>{price.title}</li>
+                                    </Link>
+                                )) : ""}
 
-                    </ul>
-                </SideBar>
+                            </ul>
+                        </SideBar>
 
-                <Prices>
-                    {
-                        prices?
-                            prices.map((price) => (
-                                <PriceItem item={price} key={price.title}/>
-                            )):
-                            ""
-                    }
-                </Prices>
-            </FlexContainer>
+                        <Prices>
+                            {
+                                prices ?
+                                    prices.map((price) => (
+                                        <PriceItem item={price} key={price.title}/>
+                                    )) :
+                                    ""
+                            }
+                        </Prices>
+                    </FlexContainer>
 
-        </Container>
+                </Container>
+            }
+        </>
     );
 };
 
@@ -59,6 +68,7 @@ const mapDispatchToProps = (dispatch) => {
 const mapStateToProps = (state) => {
     return {
         prices: state.shop.prices,
+        isFetching: state.shop.isFetching
     };
 };
 

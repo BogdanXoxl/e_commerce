@@ -16,7 +16,6 @@ import {
     ReferenceField,
     BooleanField,
     ArrayField,
-    ImageField,
     RichTextField,
     DateField,
     NumberField,

@@ -1,5 +1,6 @@
 import React from "react";
 import { Route, Switch} from "react-router-dom";
+import {connect} from "react-redux";
 
 import Header from "./components/Header";
 import HomePage from "./pages/HomePage";
@@ -21,8 +22,6 @@ const Router = () => {
                 <Route path="/" exact render={() => <HomePage/>} />
 
                 <Route path="/goods" exact render={() => <ProductsPage/>} />
-                <Route path="/goods/:category" exact render={() => <ProductsPage/>} />
-
                 <Route path="/good/:id" exact render={() => <ProductInfoPage/>} />
                 <Route path="/service" exact render={() => <ServicesPage/>} />
                 <Route path="/price" render={() => <PricePage/>} />
@@ -37,4 +36,10 @@ const Router = () => {
     );
 };
 
-export default Router;
+const mapStateToProps = (state) => {
+    return {
+
+    };
+};
+
+export default connect(mapStateToProps)(Router);

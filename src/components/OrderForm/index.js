@@ -17,7 +17,6 @@ const schema = Yup.object().shape({
 });
 
 const normalizePhoneNumber = (value) => {
-    console.log(value);
     const phoneNumber = parsePhoneNumberFromString(value, 'RU');
     if(phoneNumber)
         return phoneNumber.formatInternational()

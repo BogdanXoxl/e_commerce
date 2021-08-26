@@ -2,19 +2,24 @@ import React, {useEffect} from "react";
 import {connect} from "react-redux";
 
 import ServiceItem from "../../components/ServiceItem";
-import {Container, Error} from "./ServicesPage.styles";
+import {Container} from "./ServicesPage.styles";
 import {loadServices} from "../../redux/Shopping/shopping-actions";
+import Loading from "../../components/Loading";
 
 
 
-const ServicesPage = ({services, loadServices}) => {
+const ServicesPage = ({services, isFetching, loadServices}) => {
     window.scroll(0,0);
     useEffect(() => {
         loadServices();
-    }, []);
+    }, [loadServices]);
 
     return (
-        <Container>
+        <>
+            {isFetching ?
+                <Loading/>
+                :
+                <Container>
             {services.length ?
                 (
                     <>
@@ -29,13 +34,16 @@ const ServicesPage = ({services, loadServices}) => {
                 : ""
             }
         </Container>
+            }
+        </>
     );
 };
 
 
 const mapStateToProps = (state) => {
     return {
-        services: state.shop.services
+        services: state.shop.services,
+        isFetching: state.shop.isFetching
     };
 };
 

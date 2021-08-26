@@ -20,8 +20,8 @@ const INITIAL_STATE = {
     cart: _cartFromLocalStorage(),
     currentItem: null,
     currentCategory: {},
-    total_pages: 0,
-    page: 0,
+    isFetching: false,
+
 }
 
 const shopReducer = (state = INITIAL_STATE, {type, payload}) => {
@@ -104,6 +104,11 @@ const shopReducer = (state = INITIAL_STATE, {type, payload}) => {
                 ...state,
                 prices: payload
             };
+        case actionTypes.SET_IS_FETCHING:
+            return {
+                ...state,
+                isFetching: payload
+            }
         default:
             return state;
     }

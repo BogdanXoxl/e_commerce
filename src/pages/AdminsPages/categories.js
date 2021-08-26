@@ -7,13 +7,12 @@ import {
     Edit,
     SimpleShowLayout,
     SimpleForm,
-    ReferenceInput,
     TextField,
     TextInput,
     ShowButton,
     EditButton,
     DeleteButton,
-    SelectInput, Filter, required
+    Filter, required
 } from "react-admin";
 
 const CategoryTitle = ({ record }) => (

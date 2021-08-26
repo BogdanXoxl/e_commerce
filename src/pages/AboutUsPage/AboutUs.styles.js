@@ -35,6 +35,10 @@ export const Content = styled.div`
     border: 3px solid var(--green);
     border-radius: 1px;
   }
+  
+  img{
+    margin: 0 auto;
+  }
 `;
 
 export const Item = styled.div`

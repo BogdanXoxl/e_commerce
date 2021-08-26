@@ -1,8 +1,6 @@
 import {createGlobalStyle} from "styled-components";
 
 export const GlobalStyles = createGlobalStyle`
-  @import url(https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css);
-
   :root {
     --white: #fff;
     --lightGrey: #d1d8de;

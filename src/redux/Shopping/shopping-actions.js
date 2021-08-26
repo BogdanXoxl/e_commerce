@@ -1,6 +1,5 @@
 import * as actionTypes from "./shopping-types";
 import firebase from "../../firebase/index";
-import {ADD_ORDER_TO_DATABASE} from "./shopping-types";
 
 export const addToCart = (itemID, typeOfItem) => {
     return {
@@ -49,43 +48,47 @@ export const loadCurrentCategory= (item) => {
 
 export const loadCurrentItemById = (id) => {
     return async (dispatch) => {
+        dispatch({type: actionTypes.SET_IS_FETCHING, payload: true});
         const item = await firebase.getProductById(id);
         dispatch({type: actionTypes.LOAD_CURRENT_ITEM, payload: item});
+        dispatch({type: actionTypes.SET_IS_FETCHING, payload: false});
     }
 };
 
-export const loadCurrentCategoryByTitle = (title) => {
-    return async (dispatch) => {
-        const category = await firebase.getCategoryByTitle(title);
-        dispatch({type: actionTypes.LOAD_CURRENT_CATEGORY, payload: category});
-    }
-};
 
 export const loadCategories = () => {
     return async (dispatch) => {
+        dispatch({type: actionTypes.SET_IS_FETCHING, payload: true});
         const categories = await firebase.getCategories();
         dispatch({type: actionTypes.LOAD_CATEGORIES_FROM_DATABASE, payload: categories});
+        dispatch({type: actionTypes.SET_IS_FETCHING, payload: false});
     }
 };
 
 export const loadProducts = () => {
     return async (dispatch) => {
+        dispatch({type: actionTypes.SET_IS_FETCHING, payload: true});
         const category = await firebase.getProducts();
         dispatch({type: actionTypes.LOAD_PRODUCTS_FROM_DATABASE, payload: category});
+        dispatch({type: actionTypes.SET_IS_FETCHING, payload: false});
     }
 };
 
 export const loadServices = () => {
     return async (dispatch) => {
+        dispatch({type: actionTypes.SET_IS_FETCHING, payload: true});
         const services = await firebase.getServices();
         dispatch({type: actionTypes.LOAD_SERVICES_FROM_DATABASE, payload: services});
+        dispatch({type: actionTypes.SET_IS_FETCHING, payload: false});
     }
 };
 
 export const loadPrices = () => {
   return async (dispatch) => {
+      dispatch({type: actionTypes.SET_IS_FETCHING, payload: true});
       const prices = await firebase.getPrices();
       dispatch({type: actionTypes.LOAD_PRICES_FROM_DATABASE, payload: prices});
+      dispatch({type: actionTypes.SET_IS_FETCHING, payload: false});
     }
 };
 
@@ -95,3 +98,7 @@ export const addOrder = (userData, Cart) => {
         type:actionTypes.ADD_ORDER_TO_DATABASE
     };
 };
+
+export const search = () => {
+
+}

@@ -17,10 +17,11 @@ import {
 } from "./ProductInfoPage.styles";
 
 import NoImage from "../../assets/board.png";
+import Loading from "../../components/Loading";
 
 
 
-const ProductInfoPage = ({item, inCart, addToCart, loadCurrentItemById, loadCurrentItem, ...props}) => {
+const ProductInfoPage = ({item, inCart, isFetching, addToCart, loadCurrentItemById, loadCurrentItem, ...props}) => {
     window.scroll(0,0);
     useEffect(() => {
         window.scroll(0,0);
@@ -31,7 +32,11 @@ const ProductInfoPage = ({item, inCart, addToCart, loadCurrentItemById, loadCurr
     }, []);
 
     return (
-            <Container>
+        <>
+            {isFetching ?
+                <Loading/>
+                :
+                <Container>
                 <Wrapper>
                     <Info>
                         <h1>{item?.title}</h1>
@@ -69,13 +74,16 @@ const ProductInfoPage = ({item, inCart, addToCart, loadCurrentItemById, loadCurr
                     </IMGContainer>
                 </Wrapper>
             </Container>
+            }
+        </>
     );
 };
 
 const mapStateToProps = (state) => {
     return {
         item: state.shop.currentItem,
-        inCart: (item) => state.shop.cart.find(el => el?.id === item?.id && el?.type === item?.type)
+        inCart: (item) => state.shop.cart.find(el => el?.id === item?.id && el?.type === item?.type),
+        isFetching: state.shop.isFetching
     };
 };
 

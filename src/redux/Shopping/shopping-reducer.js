@@ -17,11 +17,11 @@ const INITIAL_STATE = {
     services: [],
     categories: [{id: 0}],
     prices: [],
+    searchItems: [],
     cart: _cartFromLocalStorage(),
     currentItem: null,
     currentCategory: {},
     isFetching: false,
-
 }
 
 const shopReducer = (state = INITIAL_STATE, {type, payload}) => {
@@ -108,7 +108,12 @@ const shopReducer = (state = INITIAL_STATE, {type, payload}) => {
             return {
                 ...state,
                 isFetching: payload
-            }
+            };
+        case actionTypes.LOAD_PRODUCTS_FOR_SEARCHING:
+            return {
+                ...state,
+                searchItems: payload,
+            };
         default:
             return state;
     }

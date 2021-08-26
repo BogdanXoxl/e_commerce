@@ -46,14 +46,11 @@ export const Image = styled.img`
     opacity: 0.7;
   }
 
-  animation: animatePic 1.6s;
+  animation: animatePic 1s;
 
   @keyframes animatePic {
     0%{
       opacity: 0;
-    }
-    50%{
-      opacity: 0.1;
     }
     100%{
       opacity: 1;

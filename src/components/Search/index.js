@@ -1,17 +1,21 @@
 import React, {useState} from "react";
+import {connect} from "react-redux";
+import {withRouter} from "react-router-dom";
 
 import {Wrapper, Input, Button} from "./Search.styles";
+import {search} from "../../redux/Shopping/shopping-actions";
 
 
-const Search = (props) => {
+const Search = ({search, ...props}) => {
 
     const [value, setValue] = useState('');
     const submitEvent = (e) => {
         e.preventDefault();
-    }
-
-    const onClickHandler = () => {
-
+        if(value){
+            search(value);
+            setValue('');
+            props.history.push('/search');
+        }
     }
 
 
@@ -25,4 +29,10 @@ const Search = (props) => {
     );
 };
 
-export default Search;
+const mapDispatchToProps = (dispatch) => {
+    return {
+        search: (text) => dispatch(search(text))
+    };
+};
+
+export default connect(null, mapDispatchToProps)(withRouter(Search));

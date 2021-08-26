@@ -1,5 +1,6 @@
 import * as actionTypes from "./shopping-types";
 import firebase from "../../firebase/index";
+import {LOAD_PRODUCTS_FOR_SEARCHING} from "./shopping-types";
 
 export const addToCart = (itemID, typeOfItem) => {
     return {
@@ -68,8 +69,8 @@ export const loadCategories = () => {
 export const loadProducts = () => {
     return async (dispatch) => {
         dispatch({type: actionTypes.SET_IS_FETCHING, payload: true});
-        const category = await firebase.getProducts();
-        dispatch({type: actionTypes.LOAD_PRODUCTS_FROM_DATABASE, payload: category});
+        const products = await firebase.getProducts();
+        dispatch({type: actionTypes.LOAD_PRODUCTS_FROM_DATABASE, payload: products});
         dispatch({type: actionTypes.SET_IS_FETCHING, payload: false});
     }
 };
@@ -99,6 +100,22 @@ export const addOrder = (userData, Cart) => {
     };
 };
 
-export const search = () => {
 
+
+export const search = (searchItem) => {
+    return async (dispatch) => {
+        dispatch({type: actionTypes.SET_IS_FETCHING, payload: true});
+        const products = await firebase.getProducts().then(items => items.filter((product) => (
+            product?.title.toLowerCase().includes(searchItem.toLowerCase())
+            ||
+            product?.description?.toLowerCase().includes(searchItem.toLowerCase())
+            ||
+            product?.sizes?.find(i => i?.size.toLowerCase().includes(searchItem.toLowerCase()))
+            ||
+            product?.material?.toLowerCase().includes(searchItem.toLowerCase())
+        )));
+
+        dispatch({type: actionTypes.LOAD_PRODUCTS_FOR_SEARCHING, payload: products});
+        dispatch({type: actionTypes.SET_IS_FETCHING, payload: false});
+    }
 }

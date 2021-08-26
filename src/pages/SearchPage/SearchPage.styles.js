@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   max-width: var(--maxWidth);
-  margin: 0 auto 3rem;
+  margin: 0 auto;
   padding-top: 15vh;
   min-height: 70vh;
 
@@ -22,7 +22,7 @@ export const Container = styled.div`
   }
   
   h1{
-    margin-top: 21vh;
+    padding-top: 21vh;
     grid-column: 1/-1;
     text-align: center;
     color: var(--orange);
@@ -36,7 +36,6 @@ export const Container = styled.div`
     justify-content: center;
     width: 100vw;
     overflow: hidden;
-    margin: 1rem auto;
     grid-template-columns: repeat(auto-fit, 21rem);
   }
 `;

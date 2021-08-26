@@ -18,7 +18,23 @@ export const NotFound = styled.div`
   text-transform: capitalize;
 `;
 export const Content = styled.div`
-  
+  p{
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 1rem;
+  }
+
+  pre {
+    width: 100%;
+    padding: 3rem;
+    margin: 0;
+    overflow: auto;
+    overflow-y: hidden;
+    font-size: 12px;
+    line-height: 20px;
+    border: 3px solid var(--green);
+    border-radius: 1px;
+  }
 `;
 
 export const Item = styled.div`

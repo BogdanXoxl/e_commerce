@@ -98,6 +98,14 @@ export const ServiceContainer = styled.div`
   
   span{
     white-space: nowrap;
+    
+    a{
+      color: var(--green);
+      text-decoration: none;
+      :hover{
+        text-decoration: underline;
+      }
+    }
   }
 `;
 

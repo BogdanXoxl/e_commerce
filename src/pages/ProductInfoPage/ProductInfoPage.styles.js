@@ -85,6 +85,7 @@ export const BtnContainer = styled.div`
 
 export const Sort = styled.span`
   max-height: 3rem;
+  margin-left: 1rem;
 `;
 
 export const IMGContainer = styled.div`

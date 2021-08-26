@@ -1,6 +1,5 @@
 import * as actionTypes from "./shopping-types";
 import firebase from "../../firebase/index";
-import {LOAD_PRODUCTS_FOR_SEARCHING} from "./shopping-types";
 
 export const addToCart = (itemID, typeOfItem) => {
     return {

@@ -1,49 +1,36 @@
 import React from "react";
-import {Container, Content, Items, Social, FooterStyles} from "./Footer.styles";
-import {Link} from "react-router-dom";
+import {Container, Content, ImageBlock, Text} from "./Footer.styles";
+
+import PosImg from "../../assets/pos.png";
+import TelImg from "../../assets/tel.png";
+import MetroImg from "../../assets/Untitled-5_1.png";
+import EclipseImg from "../../assets/Ellipse 4.png";
 
 const Footer = () => {
     return (
-        <FooterStyles>
-            <Container>
-                <hr/>
-                <br/>
-                <Content>
-                    <Items>
-                        <a href="#" className="logo">Skrapp.io</a>
-                        <p> Skrapp.io is an Email Finder for B2B sales and email marketing. We are collecting and
-                            crafting public data to provide an
-                            advanced prospecting tool to help professionals launch performant email outreach
-                            campaigns.</p>
-                        <Social>
-                            <a href="#"><i className="fa fa-facebook"></i></a>
-                            <a href="#"><i className="fa fa-twitter"></i></a>
-                            <a href="#"><i className="fa fa-youtube-play"></i></a>
-                            <a href="#"><i className="fa fa-github"></i></a>
-                        </Social>
-                    </Items>
-                    <Items>
-                        <ul>
-                            <li><Link to="/about">О нас</Link></li>
-                            <li><Link to="/price">Цены</Link></li>
-                            <li><Link to="/about">Контакты</Link></li>
-                        </ul>
-                    </Items>
-                    <Items>
-                        <h3>Support</h3>
-                            Строительство
-                            <br/>
-                            +7 846 300-26-22 <br/>
-                            443079,<br/> Самара Мяги, 24А
-                            Пиломатериалы <br/>
-                            +7 846 379-07-41
-                            443022, Самара Заводское шоссе, 12В
-                    </Items>
-                </Content>
-                <hr/>
-                <p className="end">Copyright © 2021. All rights reserved.</p>
-            </Container>
-        </FooterStyles>
+        <Container>
+            <Content>
+                <Text image={PosImg}>
+                    Россия, Республика Татарстан, Казань,
+                    Теплично-Комбинатская улица
+                </Text>
+                <Text image={TelImg}>
+                    <a href="tel:+7 (999) 164-25-90">+7 (999) 164-25-90</a>
+                    <a href="tel:+7 (999) 164-25-90">+7 (996) 047-51-77</a>
+                </Text>
+                <Text image={MetroImg} imgE={EclipseImg}>
+                    <span>Авиастроительная</span> <span>Северный вокзал</span>
+                    <span>Яшьлек</span>
+                </Text>
+                <ImageBlock>
+                    <div>
+                        <a href="https://www.instagram.com/pilovo4nik_bitovki43" target="_blank"><i className="fab fa-instagram"></i></a>
+                        <a href="https://wa.me/+79991642590" target="_blank"><i className="fab fa-whatsapp"></i></a>
+                        <a href="mailto:priora.danil@yandex.ru" target="_blank"><i className="far fa-envelope"></i></a>
+                    </div>
+                </ImageBlock>
+            </Content>
+        </Container>
     );
 };
 

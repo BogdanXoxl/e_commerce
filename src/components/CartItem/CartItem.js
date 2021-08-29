@@ -6,7 +6,7 @@ import Swal from "sweetalert2";
 
 import {adjustQty, removeFromCart} from "../../redux/Shopping/shopping-actions";
 
-import NoImage from "../../assets/no_image.jpg";
+import NoImage from "../../assets/logo.png";
 import {
     Container, DeleteBtn,
     Description,

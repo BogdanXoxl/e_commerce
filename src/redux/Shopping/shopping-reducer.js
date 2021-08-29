@@ -1,5 +1,6 @@
 import * as actionTypes from "./shopping-types";
 import {IMMUTABLE_TYPES, TYPES_OF_GOODS} from "./shopping-types";
+import firebase from "../../firebase";
 
 
 const _cartFromLocalStorage = () => {
@@ -110,9 +111,18 @@ const shopReducer = (state = INITIAL_STATE, {type, payload}) => {
                 isFetching: payload
             };
         case actionTypes.LOAD_PRODUCTS_FOR_SEARCHING:
+            const products = state.products.filter((product) => (
+                product?.title.toLowerCase().includes(payload.toLowerCase())
+                ||
+                product?.description?.toLowerCase().includes(payload.toLowerCase())
+                ||
+                product?.sizes?.find(i => i?.size.toLowerCase().includes(payload.toLowerCase()))
+                ||
+                product?.material?.toLowerCase().includes(payload.toLowerCase())
+            ));
             return {
                 ...state,
-                searchItems: payload,
+                searchItems: products,
             };
         default:
             return state;

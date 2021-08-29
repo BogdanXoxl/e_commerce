@@ -104,17 +104,8 @@ export const addOrder = (userData, Cart) => {
 export const search = (searchItem) => {
     return async (dispatch) => {
         dispatch({type: actionTypes.SET_IS_FETCHING, payload: true});
-        const products = await firebase.getProducts().then(items => items.filter((product) => (
-            product?.title.toLowerCase().includes(searchItem.toLowerCase())
-            ||
-            product?.description?.toLowerCase().includes(searchItem.toLowerCase())
-            ||
-            product?.sizes?.find(i => i?.size.toLowerCase().includes(searchItem.toLowerCase()))
-            ||
-            product?.material?.toLowerCase().includes(searchItem.toLowerCase())
-        )));
-
-        dispatch({type: actionTypes.LOAD_PRODUCTS_FOR_SEARCHING, payload: products});
+        await dispatch(loadProducts());
+        dispatch({type: actionTypes.LOAD_PRODUCTS_FOR_SEARCHING, payload: searchItem});
         dispatch({type: actionTypes.SET_IS_FETCHING, payload: false});
     }
 }

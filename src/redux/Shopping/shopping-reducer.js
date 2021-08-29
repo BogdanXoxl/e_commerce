@@ -1,6 +1,5 @@
 import * as actionTypes from "./shopping-types";
 import {IMMUTABLE_TYPES, TYPES_OF_GOODS} from "./shopping-types";
-import firebase from "../../firebase";
 
 
 const _cartFromLocalStorage = () => {
